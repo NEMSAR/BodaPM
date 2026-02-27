@@ -74,8 +74,26 @@
             background-image: var(--logo-nav); background-size: contain; background-repeat: no-repeat; background-position: center;
         }
 
-        /* PARALLAX FOTOS */
-        .parallax { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
+        /* PARALLAX FOTOS Y CORRECCIÓN PARA CELULARES */
+.parallax { 
+    background-attachment: fixed; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+
+/* El "salvavidas" para el mega-zoom en celulares */
+@media (max-width: 850px) {
+    .parallax {
+        background-attachment: scroll; /* Apaga el efecto fijo que rompe iOS/Android */
+    }
+    .hero {
+        background-position: center 30%; /* Enfoca la cámara un poco más arriba para que se vean bien las caras */
+    }
+    .foto-intermedia {
+        background-position: center center; /* Centra perfectamente los anillos */
+    }
+}
         
         .hero {
             position: relative; width: 100%; height: 85vh; margin-top: 70px; background-image: var(--foto-playa);
@@ -314,3 +332,4 @@
     </script>
 </body>
 </html>
+
