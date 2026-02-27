@@ -4,30 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Invitación Pedro & Melani</title>
-    
     <style>
-        body, html {
+        /* 1. RESET TOTAL: Elimina márgenes y rellenos de TODOS los elementos */
+        * {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Evita que se pueda scrollear el fondo */
-            background-color: #ffffff;
+            box-sizing: border-box;
         }
 
-        iframe {
+        /* 2. Asegura que el cuerpo de la página ocupe todo el espacio sin scroll */
+        html, body {
             width: 100%;
-            height: calc(100% + 50px); /* Le damos 50px extra de alto */
+            height: 100%;
+            overflow: hidden;
+            background-color: #ffffff; /* Color de fondo por si acaso */
+        }
+
+        /* 3. Contenedor que recortará la parte superior del iframe */
+        .iframe-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Esto es lo que oculta la barra que movemos hacia arriba */
+        }
+
+        /* 4. El iframe: ancho total y desplazado hacia arriba */
+        iframe {
+            position: absolute;
+            top: -55px; /* Subimos 55px para asegurar que se oculte la barra de Wix */
+            left: 0;
+            width: 100vw; /* FUERZA el ancho al 100% del dispositivo */
+            height: calc(100% + 55px); /* Compensamos la altura para que llegue hasta abajo */
             border: none;
-            display: block;
-            /* AQUÍ ESTÁ LA MAGIA: Desliza el iframe hacia arriba forzando el renderizado */
-            transform: translateY(-50px); 
         }
     </style>
 </head>
 <body>
-
-    <iframe src="https://nems07.wixsite.com/pmboda"></iframe>
-
+    <div class="iframe-container">
+        <iframe src="https://nemsar.github.io/BodaPM/"></iframe>
+    </div>
 </body>
 </html>
