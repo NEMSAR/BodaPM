@@ -1,6 +1,44 @@
-<div style="width: 100%; height: 100vh; overflow: hidden; position: relative;">
-  <iframe 
-    src="https://nems07.wixsite.com/pmboda" 
-    style="width: 100%; height: calc(100vh + 50px); border: none; margin-top: -50px;">
-  </iframe>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Invitación Pedro & Melani</title>
+    
+    <style>
+        /* Reseteamos los márgenes para que ocupe toda la pantalla */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Evita que haya un doble scroll molesto */
+            background-color: #141414; /* Mismo fondo de la cuenta regresiva para que quede integrado */
+        }
+
+        /* Contenedor que empuja la web hacia arriba */
+        .contenedor-oculto {
+            position: absolute;
+            top: -45px; /* Altura promedio de la barra de Wix. Ajustar si es necesario */
+            left: 0;
+            width: 100%;
+            height: calc(100% + 45px); /* Compensa lo que subimos */
+        }
+
+        /* El iframe que carga tu web de Wix */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-oculto">
+        <iframe src="https://nems07.wixsite.com/pmboda"></iframe>
+    </div>
+
+</body>
+</html>
