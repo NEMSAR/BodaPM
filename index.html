@@ -2,41 +2,47 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Invitación Pedro & Melani</title>
     
     <style>
-        /* Reseteamos los márgenes para que ocupe toda la pantalla */
-        body, html {
+        /* 1. Reset total: elimina márgenes y bloquea el rebote (overscroll) del navegador */
+        html, body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Evita que haya un doble scroll molesto */
-            background-color: #141414; /* Mismo fondo de la cuenta regresiva para que quede integrado */
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff; /* Fondo blanco para disimular bordes */
+            overflow: hidden; 
+            overscroll-behavior: none; /* Clave para bloquear el efecto rebote */
         }
 
-        /* Contenedor que empuja la web hacia arriba */
-        .contenedor-oculto {
-            position: absolute;
-            top: -45px; /* Altura promedio de la barra de Wix. Ajustar si es necesario */
+        /* 2. Un contenedor fijo que actúa como una ventana estricta */
+        .contenedor-iframe {
+            position: fixed;
+            top: 0;
             left: 0;
-            width: 100%;
-            height: calc(100% + 45px); /* Compensa lo que subimos */
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        /* El iframe que carga tu web de Wix */
+        /* 3. El iframe forzado al ancho de la pantalla y desplazado hacia arriba */
         iframe {
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            top: -50px; /* Ajuste para esconder la barra (puedes probar -55px si aún se asoma) */
+            left: 0;
+            width: 100vw; /* Fuerza a que ocupe todo el ancho del celular, quitando franjas negras */
+            height: calc(100vh + 50px);
             border: none;
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="contenedor-oculto">
+    <div class="contenedor-iframe">
         <iframe src="https://nems07.wixsite.com/pmboda"></iframe>
     </div>
 
