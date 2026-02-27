@@ -3,47 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invitación Pedro & Melani</title>
+    <title>Boda Pedro & Melani</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        /* 1. RESET TOTAL: Elimina márgenes y rellenos de TODOS los elementos */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* RESET Y CONFIGURACIÓN BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #fcfcfc; color: #333; overflow-x: hidden; }
 
-        /* 2. Asegura que el cuerpo de la página ocupe todo el espacio sin scroll */
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #ffffff; /* Color de fondo por si acaso */
-        }
+        .fuente-serif { font-family: 'Cinzel', serif; }
+        .fuente-script { font-family: 'Great Vibes', cursive; }
+        .color-dorado { color: #A68B5B; } /* Tono dorado/bronce refinado */
 
-        /* 3. Contenedor que recortará la parte superior del iframe */
-        .iframe-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Esto es lo que oculta la barra que movemos hacia arriba */
+        /* HEADER FLOTANTE */
+        .header-logo {
+            text-align: center; padding: 15px 0; background: rgba(255, 255, 255, 0.95);
+            position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
+        .header-logo img { height: 40px; } /* Logo PM del cabezal */
 
-        /* 4. El iframe: ancho total y desplazado hacia arriba */
-        iframe {
-            position: absolute;
-            top: -55px; /* Subimos 55px para asegurar que se oculte la barra de Wix */
-            left: 0;
-            width: 100vw; /* FUERZA el ancho al 100% del dispositivo */
-            height: calc(100% + 55px); /* Compensamos la altura para que llegue hasta abajo */
-            border: none;
+        /* SECCIÓN 1: FOTO PRINCIPAL (HERO) */
+        .hero {
+            position: relative; width: 100%; height: 85vh; margin-top: 70px;
+            /* 📸 ENLACE DE FOTO 1 AQUÍ (Fondo de Pedro y Melani en la playa) */
+            background-image: url('Pega_Aqui_Tu_Link_De_La_Foto_Playa.jpg'); 
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 40px;
         }
+        /* Degradado blanco para fusionar la foto con la página */
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 35%;
+            background: linear-gradient(to top, rgba(252,252,252,1), rgba(252,252,252,0)); pointer-events: none;
+        }
+        .hero-overlay { position: relative; z-index: 10; text-align: center; }
+        /* 📸 ENLACE DE FOTO 2 AQUÍ (Logo PM grande sobre la foto) */
+        .hero-overlay img { width: 200px; margin-bottom: 10px; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3)); }
+
+        /* SECCIÓN 2: TEXTOS INVITACIÓN */
+        .seccion-blanca { text-align: center; padding: 60px 20px; background-color: #fcfcfc; }
+        .titulo-invitacion { font-size: 1.5rem; letter-spacing: 4px; color: #555; }
+        .subtitulo-invitacion { font-size: 3rem; margin-top: -10px; }
+        .frase-texto { font-size: 1.5rem; color: #666; font-style: italic; margin-top: 40px; }
+        .frase-script { font-size: 2.8rem; margin-top: -15px; }
+
+        /* SECCIÓN 3: CALENDARIO Y RELOJ (OSCURO) */
+        .seccion-oscura { background-color: #141414; padding: 60px 20px; text-align: center; color: #C8A97E; }
+        .grid-calendario { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-bottom: 30px; max-width: 350px; margin: 0 auto; }
+        .dia-semana { font-weight: bold; color: #9a825e; font-size: 0.8rem; padding-bottom: 5px; border-bottom: 1px solid #333; }
+        .dia-numero { padding: 8px 0; color: #e0e0e0; font-size: 0.9rem; border-radius: 5px; }
+        
+        /* Animación en bucle infinito CSS (Latido) */
+        @keyframes latido {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 169, 126, 0.6); }
+            50% { transform: scale(1.2); box-shadow: 0 0 12px 6px rgba(200, 169, 126, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 169, 126, 0); }
+        }
+        .fecha-objetivo-animada { background-color: #C8A97E; color: #000; font-weight: bold; border-radius: 50%; animation: latido 1.5s infinite; }
+        
+        .flex-reloj { display: flex; justify-content: center; gap: 10px; max-width: 350px; margin: 0 auto; }
+        .caja-reloj { border: 1px solid #C8A97E; padding: 15px 5px; border-radius: 8px; flex: 1; }
+        .num-reloj { display: block; font-size: 1.8rem; font-weight: 700; line-height: 1; color: #fff; }
+        .texto-reloj { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-top: 5px; display: block; color: #9a825e;}
+
+        /* SECCIÓN 4: FOTO INTERMEDIA */
+        .foto-intermedia {
+            width: 100%; height: 50vh;
+            /* 📸 ENLACE DE FOTO 3 AQUÍ (Foto de las manos con anillos) */
+            background-image: url('Pega_Aqui_Tu_Link_De_La_Foto_Anillos.jpg');
+            background-size: cover; background-position: center;
+            position: relative;
+        }
+        /* 📸 ENLACE DE FOTO 4 AQUÍ (Logo PM sobre la foto de anillos, si lo deseas. Si no, borra la etiqueta <img> de abajo) */
+        .foto-intermedia img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150px; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3)); }
+
+        /* SECCIÓN 5: HORARIOS Y DETALLES */
+        .seccion-detalles { text-align: center; padding: 60px 20px; background-color: #fcfcfc; }
+        .evento { margin-bottom: 40px; }
+        .evento h4 { font-size: 1.3rem; margin-bottom: 5px; color: #444; letter-spacing: 1px; }
+        .evento p { color: #666; font-size: 1rem; }
+        
+        .caja-destacada { border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 30px 0; margin: 40px 0; }
+        .caja-destacada h3 { font-size: 1.2rem; letter-spacing: 2px; color: #333; margin-bottom: 10px; }
+        .caja-destacada p { font-size: 1.5rem; font-weight: bold; color: #A68B5B; }
+
+        /* FOOTER PROFESIONAL */
+        footer { background-color: #111; color: #666; text-align: center; padding: 30px 20px; font-size: 0.8rem; letter-spacing: 1px; }
+        footer span { color: #A68B5B; font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="iframe-container">
-        <iframe src="https://nemsar.github.io/BodaPM/"></iframe>
-    </div>
+
+    <header class="header-logo">
+        <img src="Pega_Aqui_Tu_Link_Del_Logo_Pequeño.png" alt="PM">
+    </header>
+
+    <section class="hero" data-aos="fade-in" data-aos-duration="1500">
+        <div class="hero-overlay" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1200">
+            </div>
+    </section>
+
+    <section class="seccion-blanca">
+        <div data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="fuente-serif titulo-invitacion">ESTAS INVITADO</h2>
+            <h3 class="fuente-script color-dorado subtitulo-invitacion">A Nuestra Boda</h3>
+        </div>
+        
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" style="margin-top: 50px;">
+            <p class="fuente-serif frase-texto">Celebrando nuestro amor</p>
+            <p class="fuente-script color-dorado frase-script">con quienes amamos</p>
+        </div>
+    </section>
+
+    <section class="seccion-oscura" data-aos="fade-up" data-aos-duration="1000">
+        <h3 class="fuente-serif" style="margin-bottom: 25px; font-size: 1.1rem; letter-spacing: 3px;">MAYO 2026</h3>
+        
+        <div class="grid-calendario">
+            <div class="dia-semana">Do</div><div class="dia-semana">Lu</div><div class="dia-semana">Ma</div>
+            <div class="dia-semana">Mi</div><div class="dia-semana">Ju</div><div class="dia-semana">Vi</div><div class="dia-semana">Sa</div>
+            
+            <div></div><div></div><div></div><div></div><div></div>
+            <div class="dia-numero">1</div><div class="dia-numero fecha-objetivo-animada">2</div><div class="dia-numero">3</div>
+            <div class="dia-numero">4</div><div class="dia-numero">5</div><div class="dia-numero">6</div><div class="dia-numero">7</div>
+            <div class="dia-numero">8</div><div class="dia-numero">9</div><div class="dia-numero">10</div><div class="dia-numero">11</div>
+            <div class="dia-numero">12</div><div class="dia-numero">13</div><div class="dia-numero">14</div><div class="dia-numero">15</div>
+            <div class="dia-numero">16</div><div class="dia-numero">17</div><div class="dia-numero">18</div><div class="dia-numero">19</div>
+            <div class="dia-numero">20</div><div class="dia-numero">21</div><div class="dia-numero">22</div><div class="dia-numero">23</div>
+            <div class="dia-numero">24</div><div class="dia-numero">25</div><div class="dia-numero">26</div><div class="dia-numero">27</div>
+            <div class="dia-numero">28</div><div class="dia-numero">29</div><div class="dia-numero">30</div><div class="dia-numero">31</div>
+        </div>
+
+        <h2 class="fuente-serif" style="margin: 40px 0 20px; font-size: 0.9rem; letter-spacing: 2px;">FALTAN PARA EL GRAN DÍA:</h2>
+        
+        <div class="flex-reloj">
+            <div class="caja-reloj"><span id="dias" class="num-reloj">00</span><span class="texto-reloj">Días</span></div>
+            <div class="caja-reloj"><span id="horas" class="num-reloj">00</span><span class="texto-reloj">Hrs</span></div>
+            <div class="caja-reloj"><span id="minutos" class="num-reloj">00</span><span class="texto-reloj">Min</span></div>
+            <div class="caja-reloj"><span id="segundos" class="num-reloj">00</span><span class="texto-reloj">Seg</span></div>
+        </div>
+    </section>
+
+    <section class="foto-intermedia" data-aos="fade-in" data-aos-duration="1500">
+        </section>
+
+    <section class="seccion-detalles">
+        
+        <div class="evento" data-aos="fade-up" data-aos-duration="1000">
+            <h4 class="fuente-serif">01. Ceremonia</h4>
+            <p>20:30 hs. Iglesia San Roque</p>
+        </div>
+        
+        <div class="evento" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+            <h4 class="fuente-serif">02. Civil y Celebración</h4>
+            <p>21:30 hs. Moreno 196</p>
+        </div>
+
+        <div class="caja-destacada" data-aos="zoom-in" data-aos-duration="1000">
+            <h3 class="fuente-serif">DRESS CODE:</h3>
+            <p class="fuente-serif" style="font-size: 1.3rem;">Elegante Sport</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="fuente-serif titulo-invitacion" style="font-size: 1.2rem; margin-bottom: 10px;">¡Esperamos verte!</h2>
+            <p style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; color: #666;">Por Favor Confirmar Presencia</p>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+                <p style="font-size: 0.9rem; letter-spacing: 1px; color: #555; text-transform: uppercase;">Valor de Tarjeta:</p>
+                <p style="font-size: 1.8rem; font-weight: bold; color: #333; margin-top: 5px;">$40.000</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>CREADO POR <span>NovaBit Media</span> PARA PEDRO & MELANI</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar animaciones de Scroll
+        AOS.init({
+            once: true, // La animación ocurre solo una vez al bajar
+            offset: 100 // Empieza a animar 100px antes de aparecer
+        });
+
+        // Motor de la Cuenta Regresiva
+        const fechaObjetivo = new Date("May 2, 2026 15:30:00").getTime();
+
+        setInterval(function() {
+            const ahora = new Date().getTime();
+            const distancia = fechaObjetivo - ahora;
+            
+            if (distancia > 0) {
+                const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+                
+                const format = (num) => num < 10 ? "0" + num : num;
+
+                document.getElementById("dias").innerText = format(dias);
+                document.getElementById("horas").innerText = format(horas);
+                document.getElementById("minutos").innerText = format(minutos);
+                document.getElementById("segundos").innerText = format(segundos);
+            }
+        }, 1000);
+    </script>
+
 </body>
 </html>
