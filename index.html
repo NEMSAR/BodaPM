@@ -2,62 +2,89 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Boda Pedro & Melani</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Invitación Pedro & Melani</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* RESET Y CONFIGURACIÓN BASE */
+        :root {
+            /* 1. Foto de la playa (Pedro y Melani de fondo) */
+            --foto-playa: url('https://images.unsplash.com/photo-1583939008579-2efcbde022e3?q=80&w=1000&auto=format&fit=crop');
+            
+            /* 2. Foto de las manos y los anillos */
+            --foto-anillos: url('https://images.unsplash.com/photo-1596455607563-ad6193f76b17?q=80&w=1000&auto=format&fit=crop');
+            
+            /* 3. Logo PM chiquito (El que va arriba en la barra blanca) */
+            --logo-nav: url('PON_AQUI_EL_LINK_DEL_LOGO_PEQUEÑO.png');
+            
+            /* 4. Logo PM Grande (El que va sobre la foto de la playa) */
+            --logo-grande: url('PON_AQUI_EL_LINK_DEL_LOGO_GRANDE.png');
+        }
+    </style>
+    <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #fcfcfc; color: #333; overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #333; overflow-x: hidden; }
 
         .fuente-serif { font-family: 'Cinzel', serif; }
         .fuente-script { font-family: 'Great Vibes', cursive; }
-        .color-dorado { color: #A68B5B; } /* Tono dorado/bronce refinado */
+        .color-dorado { color: #A68B5B; } 
+
+        /* Animación en Bucle: Efecto Flotante para los Logos */
+        @keyframes flotar {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+        .animacion-flotante { animation: flotar 4s ease-in-out infinite; }
 
         /* HEADER FLOTANTE */
         .header-logo {
-            text-align: center; padding: 15px 0; background: rgba(255, 255, 255, 0.95);
-            position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center; padding: 15px 0; background: rgba(255, 255, 255, 0.98);
+            position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            /* Carga la imagen de la variable 3 */
+            background-image: var(--logo-nav);
+            background-repeat: no-repeat; background-position: center; background-size: contain;
+            height: 70px; 
         }
-        .header-logo img { height: 40px; } /* Logo PM del cabezal */
 
         /* SECCIÓN 1: FOTO PRINCIPAL (HERO) */
         .hero {
             position: relative; width: 100%; height: 85vh; margin-top: 70px;
-            /* 📸 ENLACE DE FOTO 1 AQUÍ (Fondo de Pedro y Melani en la playa) */
-            background-image: url('https://i.imgur.com/32loerq.png'); 
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 40px;
+            background-image: var(--foto-playa); /* Carga la variable 1 */
+            background-size: cover; background-position: center 20%; /* Muestra más de arriba (los rostros) */
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 20px;
         }
-        /* Degradado blanco para fusionar la foto con la página */
         .hero::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 35%;
-            background: linear-gradient(to top, rgba(252,252,252,1), rgba(252,252,252,0)); pointer-events: none;
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25%;
+            background: linear-gradient(to top, rgba(255,255,255,1) 10%, rgba(255,255,255,0)); pointer-events: none;
         }
-        .hero-overlay { position: relative; z-index: 10; text-align: center; }
-        /* 📸 ENLACE DE FOTO 2 AQUÍ (Logo PM grande sobre la foto) */
-        .hero-overlay img { width: 200px; margin-bottom: 10px; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3)); }
+        
+        /* Contenedor del Logo Grande sobre la foto */
+        .hero-logo-contenedor {
+            position: relative; z-index: 10;
+            width: 250px; height: 250px;
+            background-image: var(--logo-grande); /* Carga la variable 4 */
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.4));
+        }
 
         /* SECCIÓN 2: TEXTOS INVITACIÓN */
-        .seccion-blanca { text-align: center; padding: 60px 20px; background-color: #fcfcfc; }
-        .titulo-invitacion { font-size: 1.5rem; letter-spacing: 4px; color: #555; }
-        .subtitulo-invitacion { font-size: 3rem; margin-top: -10px; }
-        .frase-texto { font-size: 1.5rem; color: #666; font-style: italic; margin-top: 40px; }
+        .seccion-blanca { text-align: center; padding: 50px 20px 70px; background-color: #ffffff; }
+        .titulo-invitacion { font-size: 1.6rem; letter-spacing: 5px; color: #555; }
+        .subtitulo-invitacion { font-size: 3.2rem; margin-top: -15px; }
+        .frase-texto { font-size: 1.5rem; color: #666; font-style: italic; margin-top: 50px; }
         .frase-script { font-size: 2.8rem; margin-top: -15px; }
 
         /* SECCIÓN 3: CALENDARIO Y RELOJ (OSCURO) */
-        .seccion-oscura { background-color: #141414; padding: 60px 20px; text-align: center; color: #C8A97E; }
+        .seccion-oscura { background-color: #141414; padding: 70px 20px; text-align: center; color: #C8A97E; }
         .grid-calendario { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-bottom: 30px; max-width: 350px; margin: 0 auto; }
         .dia-semana { font-weight: bold; color: #9a825e; font-size: 0.8rem; padding-bottom: 5px; border-bottom: 1px solid #333; }
         .dia-numero { padding: 8px 0; color: #e0e0e0; font-size: 0.9rem; border-radius: 5px; }
         
-        /* Animación en bucle infinito CSS (Latido) */
         @keyframes latido {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 169, 126, 0.6); }
             50% { transform: scale(1.2); box-shadow: 0 0 12px 6px rgba(200, 169, 126, 0); }
@@ -70,41 +97,49 @@
         .num-reloj { display: block; font-size: 1.8rem; font-weight: 700; line-height: 1; color: #fff; }
         .texto-reloj { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-top: 5px; display: block; color: #9a825e;}
 
-        /* SECCIÓN 4: FOTO INTERMEDIA */
+        /* SECCIÓN 4: FOTO INTERMEDIA (ANILLOS) */
         .foto-intermedia {
-            width: 100%; height: 50vh;
-            /* 📸 ENLACE DE FOTO 3 AQUÍ (Foto de las manos con anillos) */
-            background-image: url('https://i.imgur.com/McA6bCD.png');
+            width: 100%; height: 60vh;
+            background-image: var(--foto-anillos); /* Carga la variable 2 */
             background-size: cover; background-position: center;
-            position: relative;
+            display: flex; align-items: center; justify-content: center;
         }
-        /* 📸 ENLACE DE FOTO 4 AQUÍ (Logo PM sobre la foto de anillos, si lo deseas. Si no, borra la etiqueta <img> de abajo) */
-        .foto-intermedia img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150px; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3)); }
+        /* Logo grande sobre los anillos (opcional, igual que en Wix) */
+        .foto-intermedia-logo {
+            width: 200px; height: 200px;
+            background-image: var(--logo-grande);
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.5));
+        }
 
         /* SECCIÓN 5: HORARIOS Y DETALLES */
-        .seccion-detalles { text-align: center; padding: 60px 20px; background-color: #fcfcfc; }
+        .seccion-detalles { text-align: center; padding: 70px 20px; background-color: #ffffff; }
         .evento { margin-bottom: 40px; }
-        .evento h4 { font-size: 1.3rem; margin-bottom: 5px; color: #444; letter-spacing: 1px; }
-        .evento p { color: #666; font-size: 1rem; }
+        .evento h4 { font-size: 1.4rem; margin-bottom: 5px; color: #333; }
+        .evento p { color: #666; font-size: 1.1rem; }
         
-        .caja-destacada { border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 30px 0; margin: 40px 0; }
-        .caja-destacada h3 { font-size: 1.2rem; letter-spacing: 2px; color: #333; margin-bottom: 10px; }
-        .caja-destacada p { font-size: 1.5rem; font-weight: bold; color: #A68B5B; }
+        .caja-destacada { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 30px 0; margin: 40px 0; }
+        .caja-destacada h3 { font-size: 1.2rem; letter-spacing: 2px; color: #333; margin-bottom: 5px; }
+        .caja-destacada p { font-size: 1.6rem; font-weight: bold; color: #A68B5B; }
 
-        /* FOOTER PROFESIONAL */
+        .boton-confirmar {
+            display: inline-block; padding: 15px 30px; margin-top: 20px;
+            background-color: #A68B5B; color: #fff; text-decoration: none;
+            font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(166, 139, 91, 0.4);
+        }
+
+        /* FOOTER */
         footer { background-color: #111; color: #666; text-align: center; padding: 30px 20px; font-size: 0.8rem; letter-spacing: 1px; }
         footer span { color: #A68B5B; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <header class="header-logo">
-        <img src="https://i.imgur.com/IsTeI2i.png" alt="PM">
-    </header>
+    <header class="header-logo"></header>
 
     <section class="hero" data-aos="fade-in" data-aos-duration="1500">
-        <div class="hero-overlay" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1200">
-            </div>
+        <div class="hero-logo-contenedor animacion-flotante" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1200"></div>
     </section>
 
     <section class="seccion-blanca">
@@ -113,14 +148,14 @@
             <h3 class="fuente-script color-dorado subtitulo-invitacion">A Nuestra Boda</h3>
         </div>
         
-        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" style="margin-top: 50px;">
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" style="margin-top: 60px;">
             <p class="fuente-serif frase-texto">Celebrando nuestro amor</p>
             <p class="fuente-script color-dorado frase-script">con quienes amamos</p>
         </div>
     </section>
 
     <section class="seccion-oscura" data-aos="fade-up" data-aos-duration="1000">
-        <h3 class="fuente-serif" style="margin-bottom: 25px; font-size: 1.1rem; letter-spacing: 3px;">MAYO 2026</h3>
+        <h3 class="fuente-serif" style="margin-bottom: 25px; font-size: 1.2rem; letter-spacing: 3px;">MAYO 2026</h3>
         
         <div class="grid-calendario">
             <div class="dia-semana">Do</div><div class="dia-semana">Lu</div><div class="dia-semana">Ma</div>
@@ -137,7 +172,7 @@
             <div class="dia-numero">28</div><div class="dia-numero">29</div><div class="dia-numero">30</div><div class="dia-numero">31</div>
         </div>
 
-        <h2 class="fuente-serif" style="margin: 40px 0 20px; font-size: 0.9rem; letter-spacing: 2px;">FALTAN PARA EL GRAN DÍA:</h2>
+        <h2 class="fuente-serif" style="margin: 50px 0 20px; font-size: 1rem; letter-spacing: 2px;">FALTAN PARA EL GRAN DÍA:</h2>
         
         <div class="flex-reloj">
             <div class="caja-reloj"><span id="dias" class="num-reloj">00</span><span class="texto-reloj">Días</span></div>
@@ -148,7 +183,8 @@
     </section>
 
     <section class="foto-intermedia" data-aos="fade-in" data-aos-duration="1500">
-        </section>
+        <div class="foto-intermedia-logo animacion-flotante" data-aos="zoom-in" data-aos-duration="1500"></div>
+    </section>
 
     <section class="seccion-detalles">
         
@@ -164,14 +200,16 @@
 
         <div class="caja-destacada" data-aos="zoom-in" data-aos-duration="1000">
             <h3 class="fuente-serif">DRESS CODE:</h3>
-            <p class="fuente-serif" style="font-size: 1.3rem;">Elegante Sport</p>
+            <p class="fuente-serif">Elegante Sport</p>
         </div>
 
         <div data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="fuente-serif titulo-invitacion" style="font-size: 1.2rem; margin-bottom: 10px;">¡Esperamos verte!</h2>
+            <h2 class="fuente-serif" style="font-size: 1.4rem; margin-bottom: 5px;">¡Esperamos verte!</h2>
             <p style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; color: #666;">Por Favor Confirmar Presencia</p>
             
-            <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+            <a href="#" class="boton-confirmar">Confirmar Asistencia</a>
+
+            <div style="margin-top: 40px;">
                 <p style="font-size: 0.9rem; letter-spacing: 1px; color: #555; text-transform: uppercase;">Valor de Tarjeta:</p>
                 <p style="font-size: 1.8rem; font-weight: bold; color: #333; margin-top: 5px;">$40.000</p>
             </div>
@@ -184,36 +222,21 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializar animaciones de Scroll
-        AOS.init({
-            once: true, // La animación ocurre solo una vez al bajar
-            offset: 100 // Empieza a animar 100px antes de aparecer
-        });
+        AOS.init({ once: true, offset: 50 });
 
-        // Motor de la Cuenta Regresiva
         const fechaObjetivo = new Date("May 2, 2026 15:30:00").getTime();
-
         setInterval(function() {
             const ahora = new Date().getTime();
             const distancia = fechaObjetivo - ahora;
             
             if (distancia > 0) {
-                const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-                const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-                const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-                
                 const format = (num) => num < 10 ? "0" + num : num;
-
-                document.getElementById("dias").innerText = format(dias);
-                document.getElementById("horas").innerText = format(horas);
-                document.getElementById("minutos").innerText = format(minutos);
-                document.getElementById("segundos").innerText = format(segundos);
+                document.getElementById("dias").innerText = format(Math.floor(distancia / (1000 * 60 * 60 * 24)));
+                document.getElementById("horas").innerText = format(Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                document.getElementById("minutos").innerText = format(Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60)));
+                document.getElementById("segundos").innerText = format(Math.floor((distancia % (1000 * 60)) / 1000));
             }
         }, 1000);
     </script>
-
 </body>
 </html>
-
-
