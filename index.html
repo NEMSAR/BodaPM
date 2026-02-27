@@ -6,41 +6,28 @@
     <title>Invitación Pedro & Melani</title>
     
     <style>
-        /* Bloqueamos el scroll del cuerpo de la página para evitar saltos */
-        html, body {
+        body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden; /* Evita que se pueda scrollear el fondo */
             background-color: #ffffff;
-            overflow: hidden; 
         }
 
-        /* Un contenedor absoluto que empuja la web hacia arriba de forma segura */
-        .contenedor-iframe {
-            position: absolute;
-            top: -50px; /* Aquí escondemos la etiqueta de Wix */
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: calc(100% + 50px); /* Compensamos los 50px que subimos */
-        }
-
-        /* El iframe ocupa todo el espacio del contenedor */
         iframe {
             width: 100%;
-            height: 100%;
+            height: calc(100% + 50px); /* Le damos 50px extra de alto */
             border: none;
             display: block;
+            /* AQUÍ ESTÁ LA MAGIA: Desliza el iframe hacia arriba forzando el renderizado */
+            transform: translateY(-50px); 
         }
     </style>
 </head>
 <body>
 
-    <div class="contenedor-iframe">
-        <iframe src="https://nemsar.github.io/BodaPM/"></iframe>
-    </div>
+    <iframe src="https://nems07.wixsite.com/pmboda"></iframe>
 
 </body>
 </html>
