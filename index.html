@@ -7,169 +7,194 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            /* 1. Foto de la playa (Pedro y Melani) */
             --foto-playa: url('https://i.imgur.com/U7LXDjL.png');
-            
-            /* 2. Foto de las manos y los anillos */
             --foto-anillos: url('https://i.imgur.com/McA6bCD.png');
-            
-            /* 3. Logo PM del Menú Superior (Fondo transparente) */
             --logo-nav: url('https://i.imgur.com/IsTeI2i.png');
-            
-            /* 4. Logo PM Dorado (Va sobre la playa) */
             --logo-dorado: url('https://i.imgur.com/leY1tlm.png');
-            
-            /* 5. Logo PM Blanco (Va sobre los anillos) */
             --logo-blanco: url('https://i.imgur.com/AHU2iQP.png');
 
-            /* Colores Base */
             --dorado: #b39b6d;
-            --gris-texto: #4a4a4a;
-            --fondo-claro: #f8f8f8;
-            --fondo-oscuro: #121212;
+            --gris-oscuro: #333333;
+            --fondo-blanco: #ffffff;
+            --fondo-gris-claro: #f7f7f7; /* Color de la franja */
+            --wp-verde: #25D366;
         }
     </style>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--fondo-claro); color: var(--gris-texto); overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--fondo-blanco); color: var(--gris-oscuro); overflow-x: hidden; }
 
         .fuente-serif { font-family: 'Cinzel', serif; }
         .fuente-script { font-family: 'Great Vibes', cursive; }
         .color-dorado { color: var(--dorado); } 
 
-        /* HEADER FLOTANTE (Fijo arriba) */
-        .header-logo {
-            text-align: center; padding: 15px 0; background: rgba(255, 255, 255, 0.95);
-            position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 1px 10px rgba(0,0,0,0.05);
-            height: 70px; display: flex; justify-content: center; align-items: center;
-        }
-        .header-logo div {
-            width: 150px; height: 40px;
-            background-image: var(--logo-nav); background-size: contain; background-repeat: no-repeat; background-position: center;
-        }
-
-        /* EFECTO PARALLAX PARA LAS FOTOS */
-        .parallax {
-            background-attachment: fixed; /* Esto hace que la foto se quede quieta al scrollear */
-            background-position: center; background-repeat: no-repeat; background-size: cover;
-        }
-
-        /* SECCIÓN 1: FOTO PRINCIPAL (PLAYA) */
-        .hero {
-            position: relative; width: 100%; height: 85vh; margin-top: 70px;
-            background-image: var(--foto-playa);
-            display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 30px;
-        }
-        /* Difuminado blanco inferior para transicionar a la página */
-        .hero::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 35%;
-            background: linear-gradient(to top, var(--fondo-claro) 5%, transparent); pointer-events: none;
-        }
+        /* ================= ANIMACIONES AVANZADAS ================= */
         
-        .hero-logo-dorado {
-            position: relative; z-index: 10; width: 220px; height: 220px; margin-bottom: 20px;
-            background-image: var(--logo-dorado);
-            background-size: contain; background-repeat: no-repeat; background-position: center;
+        /* 1. Giro 3D Continuo para los Logos PM */
+        @keyframes giro-3d {
+            0% { transform: perspective(600px) rotateY(0deg); }
+            100% { transform: perspective(600px) rotateY(360deg); }
         }
+        .animacion-giro { animation: giro-3d 8s linear infinite; }
+        .animacion-giro-lento { animation: giro-3d 12s linear infinite; }
 
-        /* TEXTOS CON SUPERPOSICIÓN (Al estilo Wix) */
-        .seccion-texto { text-align: center; padding: 60px 20px; background-color: var(--fondo-claro); }
-        .titulo-serif { font-size: 1.8rem; letter-spacing: 3px; color: var(--gris-texto); text-transform: uppercase; }
-        .subtitulo-script { font-size: 3.5rem; margin-top: -25px; line-height: 1; }
-        
-        .texto-cursivo { font-size: 1.8rem; font-style: italic; color: #666; font-family: 'Cinzel', serif;}
-        .texto-script-dorado { font-size: 3rem; margin-top: -15px; }
+        /* 2. Rebote con Pausa Exacta (1 segundo de pausa) */
+        @keyframes rebote-pausa {
+            0%   { transform: translateY(0); }
+            10%  { transform: translateY(-20px); }
+            20%  { transform: translateY(0); }
+            30%  { transform: translateY(-10px); }
+            40%  { transform: translateY(0); }
+            100% { transform: translateY(0); } /* Pausa del 40% al 100% */
+        }
+        .animacion-rebote { animation: rebote-pausa 3s infinite; display: inline-block; }
 
-        /* SECCIÓN 3: CALENDARIO Y RELOJ (OSCURO) */
-        .seccion-oscura { background-color: var(--fondo-oscuro); padding: 70px 20px; text-align: center; color: var(--dorado); }
-        .grid-calendario { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 40px; max-width: 320px; margin: 0 auto; }
-        .dia-semana { font-weight: bold; color: var(--dorado); font-size: 0.9rem; padding-bottom: 10px; border-bottom: 1px solid #333; }
-        .dia-numero { padding: 8px 0; color: #fff; font-size: 1rem; }
-        
+        /* 3. Latido Suave */
         @keyframes latido {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(179, 155, 109, 0.6); }
             50% { transform: scale(1.15); box-shadow: 0 0 15px 5px rgba(179, 155, 109, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(179, 155, 109, 0); }
         }
-        .dia-marcado { background-color: var(--dorado); color: var(--fondo-oscuro); font-weight: bold; border-radius: 50%; animation: latido 1.5s infinite; }
+
+        /* ================= ESTRUCTURA ================= */
+
+        /* HEADER */
+        .header-logo {
+            text-align: center; background: rgba(255, 255, 255, 0.98);
+            position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 1px 15px rgba(0,0,0,0.06);
+            height: 70px; display: flex; justify-content: center; align-items: center;
+        }
+        .logo-nav-img {
+            width: 150px; height: 45px;
+            background-image: var(--logo-nav); background-size: contain; background-repeat: no-repeat; background-position: center;
+        }
+
+        /* PARALLAX FOTOS */
+        .parallax { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
+        
+        .hero {
+            position: relative; width: 100%; height: 85vh; margin-top: 70px; background-image: var(--foto-playa);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 20%;
+            background: linear-gradient(to top, var(--fondo-blanco) 5%, transparent); pointer-events: none;
+        }
+        .logo-hero-dorado {
+            position: relative; z-index: 10; width: 220px; height: 220px; margin-top: 150px;
+            background-image: var(--logo-dorado); background-size: contain; background-repeat: no-repeat; background-position: center;
+            filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.4));
+        }
+
+        /* FRANJAS DE TEXTO */
+        .franja-blanca { background-color: var(--fondo-blanco); text-align: center; padding: 70px 20px; }
+        .franja-gris { background-color: var(--fondo-gris-claro); text-align: center; padding: 70px 20px; }
+
+        .titulo-serif { font-size: 1.8rem; letter-spacing: 4px; color: var(--gris-oscuro); text-transform: uppercase; }
+        .subtitulo-script { font-size: 3.8rem; margin-top: -20px; line-height: 1; }
+        .texto-cursivo { font-size: 1.8rem; font-style: italic; color: #555; font-family: 'Cinzel', serif; }
+        .texto-script-dorado { font-size: 3.2rem; margin-top: -15px; }
+
+        /* CALENDARIO */
+        .seccion-oscura { background-color: #111; padding: 70px 20px; text-align: center; color: var(--dorado); }
+        .grid-calendario { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 40px; max-width: 320px; margin: 0 auto; }
+        .dia-semana { font-weight: bold; color: var(--dorado); font-size: 0.9rem; padding-bottom: 10px; border-bottom: 1px solid #333; }
+        .dia-numero { padding: 8px 0; color: #fff; font-size: 1rem; }
+        .dia-marcado { background-color: var(--dorado); color: #111; font-weight: bold; border-radius: 50%; animation: latido 1.5s infinite; }
         
         .flex-reloj { display: flex; justify-content: center; gap: 10px; max-width: 350px; margin: 0 auto; }
-        .caja-reloj { border: 1px solid var(--dorado); padding: 15px 5px; border-radius: 4px; flex: 1; }
-        .num-reloj { display: block; font-size: 2rem; font-family: 'Cinzel', serif; font-weight: 600; line-height: 1; color: var(--dorado); }
-        .texto-reloj { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-top: 8px; display: block; color: #fff;}
+        .caja-reloj { border: 1px solid var(--dorado); padding: 15px 5px; border-radius: 6px; flex: 1; background: rgba(179, 155, 109, 0.05); }
+        .num-reloj { display: block; font-size: 2rem; font-family: 'Cinzel', serif; font-weight: 700; color: var(--dorado); line-height: 1; }
+        .texto-reloj { font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-top: 8px; display: block; color: #eee; }
 
-        /* SECCIÓN 4: FOTO INTERMEDIA (ANILLOS) */
-        .foto-intermedia {
-            width: 100%; height: 70vh;
-            background-image: var(--foto-anillos);
-            display: flex; align-items: center; justify-content: center;
-        }
-        .hero-logo-blanco {
-            width: 250px; height: 250px;
-            background-image: var(--logo-blanco);
+        /* FOTO ANILLOS */
+        .foto-intermedia { width: 100%; height: 70vh; background-image: var(--foto-anillos); display: flex; align-items: center; justify-content: center; }
+        .logo-hero-blanco {
+            width: 250px; height: 250px; background-image: var(--logo-blanco);
             background-size: contain; background-repeat: no-repeat; background-position: center;
+            filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.5));
         }
 
-        /* SECCIÓN 5: HORARIOS Y DETALLES */
-        .evento { margin-bottom: 45px; }
-        .evento h4 { font-size: 1.4rem; margin-bottom: 8px; color: var(--gris-texto); font-weight: 400; }
-        .evento p { color: #555; font-size: 1rem; font-weight: 300; }
+        /* HORARIOS Y DETALLES */
+        .evento { margin-bottom: 40px; }
+        .evento h4 { font-size: 1.4rem; margin-bottom: 5px; color: var(--gris-oscuro); font-weight: 600; }
+        .evento p { color: #555; font-size: 1.1rem; }
         
-        /* DRESS CODE */
-        .icono-pareja { width: 60px; height: 60px; margin: 0 auto 15px; opacity: 0.6; }
-        .dress-code-script { font-size: 3.5rem; color: var(--gris-texto); margin-top: -10px; }
+        .icono-pareja { width: 65px; height: 65px; margin: 0 auto 10px; opacity: 0.7; }
 
-        /* CIERRE */
-        .valor-tarjeta { font-size: 2rem; color: var(--dorado); font-family: 'Cinzel', serif; letter-spacing: 2px; margin-top: 5px; text-shadow: 0px 1px 2px rgba(0,0,0,0.1); }
+        /* DESTAQUE VALOR TARJETA */
+        .caja-valor {
+            margin-top: 20px; padding: 25px; border-radius: 12px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            display: inline-block; width: 90%; max-width: 350px; border: 1px solid rgba(179, 155, 109, 0.3);
+        }
+        .valor-tarjeta { font-size: 3rem; color: var(--dorado); font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1px; line-height: 1.2; text-shadow: 1px 2px 4px rgba(0,0,0,0.1); }
 
-        /* BOTÓN VOLVER ARRIBA */
+        /* BOTONES WHATSAPP */
+        .contenedor-botones { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px; }
+        .btn-wp {
+            display: flex; align-items: center; justify-content: center; width: 85%; max-width: 280px;
+            background-color: var(--wp-verde); color: #fff; text-decoration: none;
+            padding: 14px 20px; border-radius: 50px; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.5px;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.35); transition: transform 0.2s, background-color 0.2s;
+        }
+        .btn-wp:active { transform: scale(0.96); background-color: #1ebe5d; }
+        .btn-wp svg { width: 24px; height: 24px; fill: #fff; margin-right: 12px; }
+
+        /* FOOTER */
+        footer { background-color: #111; color: #888; text-align: center; padding: 40px 20px; font-size: 0.85rem; line-height: 1.6; border-top: 3px solid var(--dorado); }
+        footer span { color: var(--dorado); font-weight: 600; }
+
+        /* BOTÓN ARRIBA */
         .btn-arriba {
             position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px;
-            background-color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 100; text-decoration: none;
-            opacity: 0; transition: opacity 0.3s; pointer-events: none;
+            background-color: var(--fondo-blanco); border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 100; text-decoration: none; opacity: 0; pointer-events: none; transition: opacity 0.3s;
         }
         .btn-arriba.visible { opacity: 1; pointer-events: auto; }
-        .btn-arriba svg { width: 20px; height: 20px; fill: #333; }
+        .btn-arriba svg { width: 22px; height: 22px; fill: var(--gris-oscuro); }
     </style>
 </head>
 <body>
 
     <header class="header-logo">
-        <div></div>
+        <div class="logo-nav-img animacion-giro-lento"></div>
     </header>
 
     <section class="hero parallax">
-        <div class="hero-logo-dorado" data-aos="fade-up" data-aos-duration="1500"></div>
+        <div data-aos="fade-up" data-aos-duration="1500">
+            <div class="logo-hero-dorado animacion-giro"></div>
+        </div>
     </section>
 
-    <section class="seccion-texto">
+    <section class="franja-blanca">
         <div data-aos="fade-up" data-aos-duration="1200">
             <h2 class="fuente-serif titulo-serif">ESTAS INVITADO</h2>
             <h3 class="fuente-script color-dorado subtitulo-script">A Nuestra Boda</h3>
         </div>
-        
-        <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200" style="margin-top: 60px;">
+    </section>
+
+    <section class="franja-gris">
+        <div data-aos="fade-up" data-aos-duration="1200">
             <p class="texto-cursivo">Celebrando nuestro amor</p>
             <p class="fuente-script color-dorado texto-script-dorado">con quienes amamos</p>
         </div>
     </section>
 
     <section class="seccion-oscura" data-aos="fade-up" data-aos-duration="1000">
-        <h3 class="fuente-serif" style="margin-bottom: 30px; font-size: 1.3rem; letter-spacing: 3px; font-weight: 600;">MAYO 2026</h3>
+        <h3 class="fuente-serif" style="margin-bottom: 30px; font-size: 1.4rem; letter-spacing: 3px;">MAYO 2026</h3>
         
         <div class="grid-calendario">
             <div class="dia-semana">Do</div><div class="dia-semana">Lu</div><div class="dia-semana">Ma</div>
             <div class="dia-semana">Mi</div><div class="dia-semana">Ju</div><div class="dia-semana">Vi</div><div class="dia-semana">Sa</div>
             
             <div></div><div></div><div></div><div></div><div></div>
-            
             <div class="dia-numero">1</div><div class="dia-numero dia-marcado">2</div><div class="dia-numero">3</div>
             <div class="dia-numero">4</div><div class="dia-numero">5</div><div class="dia-numero">6</div><div class="dia-numero">7</div>
             <div class="dia-numero">8</div><div class="dia-numero">9</div><div class="dia-numero">10</div><div class="dia-numero">11</div>
@@ -180,7 +205,7 @@
             <div class="dia-numero">28</div><div class="dia-numero">29</div><div class="dia-numero">30</div><div class="dia-numero">31</div>
         </div>
 
-        <h2 class="fuente-serif" style="margin: 50px 0 25px; font-size: 1.1rem; letter-spacing: 2px; color: var(--dorado);">FALTAN PARA EL GRAN DÍA:</h2>
+        <h2 class="fuente-serif" style="margin: 50px 0 25px; font-size: 1.2rem; letter-spacing: 2px; color: var(--dorado);">FALTAN PARA EL GRAN DÍA:</h2>
         
         <div class="flex-reloj">
             <div class="caja-reloj"><span id="dias" class="num-reloj">00</span><span class="texto-reloj">Días</span></div>
@@ -191,13 +216,15 @@
     </section>
 
     <section class="foto-intermedia parallax">
-        <div class="hero-logo-blanco" data-aos="fade-in" data-aos-duration="1500"></div>
+        <div data-aos="fade-in" data-aos-duration="1500">
+            <div class="logo-hero-blanco animacion-giro"></div>
+        </div>
     </section>
 
-    <section class="seccion-texto">
+    <section class="franja-blanca">
         <div data-aos="fade-up" data-aos-duration="1200" style="margin-bottom: 50px;">
             <h2 class="fuente-serif titulo-serif" style="font-size: 2.2rem;">HORARIOS</h2>
-            <h3 class="fuente-script color-dorado subtitulo-script" style="font-size: 4rem;">Importantes</h3>
+            <h3 class="fuente-script color-dorado subtitulo-script" style="font-size: 4.2rem;">Importantes</h3>
         </div>
         
         <div class="evento" data-aos="fade-up" data-aos-duration="1200">
@@ -209,36 +236,56 @@
             <h4 class="fuente-serif">02. &nbsp; Civil y Celebración</h4>
             <p>21:30 hs. Moreno 196</p>
         </div>
+    </section>
 
-        <div data-aos="fade-up" data-aos-duration="1200" style="margin: 60px 0;">
-            <svg class="icono-pareja" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4a4a4a" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            <h2 class="fuente-serif titulo-serif" style="font-size: 1.6rem; letter-spacing: 2px;">DRESS CODE:</h2>
-            <p class="fuente-script dress-code-script">Elegante Sport</p>
-        </div>
-
+    <section class="franja-gris">
         <div data-aos="fade-up" data-aos-duration="1200">
-            <h2 class="texto-cursivo" style="font-size: 2.2rem; margin-bottom: 5px;">¡Esperamos verte!</h2>
-            <p class="fuente-script color-dorado" style="font-size: 2.2rem; margin-top: -10px; margin-bottom: 30px;">Por Favor Confirmar Presencia</p>
+            <svg class="icono-pareja" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#333" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <h2 class="fuente-serif titulo-serif" style="font-size: 1.8rem;">DRESS CODE:</h2>
+            <p class="fuente-script" style="font-size: 3.8rem; color: var(--gris-oscuro); margin-top: -10px;">Elegante Sport</p>
+        </div>
+    </section>
+
+    <section class="franja-blanca" style="padding-bottom: 90px;">
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <h2 class="texto-cursivo" style="font-size: 2.4rem; margin-bottom: 10px;">¡Esperamos verte!</h2>
+            <p class="fuente-script color-dorado" style="font-size: 2.6rem; margin-top: -15px;">Por Favor Confirmar Presencia</p>
             
-            <div style="margin-top: 50px;">
-                <p class="fuente-serif" style="font-size: 1.2rem; letter-spacing: 1px; color: var(--gris-texto);">VALOR DE TARJETA:</p>
-                <p class="valor-tarjeta">$40.000</p>
+            <div class="contenedor-botones">
+                <a href="TU_LINK_DE_WHATSAPP_AQUI" class="btn-wp">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    WhatsApp Pedro
+                </a>
+                
+                <a href="TU_LINK_DE_WHATSAPP_AQUI" class="btn-wp">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    WhatsApp Melani
+                </a>
+            </div>
+
+            <div data-aos="zoom-in" data-aos-duration="1000" style="margin-top: 50px;">
+                <div class="caja-valor">
+                    <p class="fuente-serif" style="font-size: 1rem; letter-spacing: 2px; color: #777; margin-bottom: 8px;">VALOR DE TARJETA:</p>
+                    <div class="animacion-rebote">
+                        <p class="valor-tarjeta">$40.000</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <footer>
+        <p>Creado por <span>NovaBit Media</span> exclusivamente para Pedro y Melani<br>© Todos los Derechos Reservados.</p>
+    </footer>
 
     <a href="#" class="btn-arriba" id="btnArriba">
         <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
     </a>
 
-    <br><br>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // 1. Inicia las animaciones de Scroll (Fade up suave)
         AOS.init({ once: true, offset: 50 });
 
-        // 2. Motor de la Cuenta Regresiva
         const fechaObjetivo = new Date("May 2, 2026 20:30:00").getTime();
         setInterval(function() {
             const ahora = new Date().getTime();
@@ -252,7 +299,6 @@
             }
         }, 1000);
 
-        // 3. Lógica del botón "Volver Arriba"
         const btnArriba = document.getElementById("btnArriba");
         window.onscroll = function() {
             if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
