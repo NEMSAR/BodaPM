@@ -3,166 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Invitación Pedro & Melani</title>
+    <title>Boda Pedro & Melani</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            /* 1. Foto de la playa (Pedro y Melani de fondo) */
-            --foto-playa: url('https://i.imgur.com/32loerq.png');
+            /* 1. Foto de la playa (Pedro y Melani) */
+            --foto-playa: url('https://i.imgur.com/U7LXDjL.png');
             
             /* 2. Foto de las manos y los anillos */
             --foto-anillos: url('https://i.imgur.com/McA6bCD.png');
             
-            /* 3. Logo PM chiquito (El que va arriba en la barra blanca) */
+            /* 3. Logo PM del Menú Superior (Fondo transparente) */
             --logo-nav: url('https://i.imgur.com/IsTeI2i.png');
             
-            /* 4. Logo PM Grande (El que va sobre la foto de la playa) */
-            --logo-grande: url('https://i.imgur.com/AHU2iQP.png');
+            /* 4. Logo PM Dorado (Va sobre la playa) */
+            --logo-dorado: url('https://i.imgur.com/leY1tlm.png');
+            
+            /* 5. Logo PM Blanco (Va sobre los anillos) */
+            --logo-blanco: url('https://i.imgur.com/AHU2iQP.png');
+
+            /* Colores Base */
+            --dorado: #b39b6d;
+            --gris-texto: #4a4a4a;
+            --fondo-claro: #f8f8f8;
+            --fondo-oscuro: #121212;
         }
     </style>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #333; overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--fondo-claro); color: var(--gris-texto); overflow-x: hidden; }
 
         .fuente-serif { font-family: 'Cinzel', serif; }
         .fuente-script { font-family: 'Great Vibes', cursive; }
-        .color-dorado { color: #A68B5B; } 
+        .color-dorado { color: var(--dorado); } 
 
-        /* Animación en Bucle: Efecto Flotante para los Logos */
-        @keyframes flotar {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-        .animacion-flotante { animation: flotar 4s ease-in-out infinite; }
-
-        /* HEADER FLOTANTE */
+        /* HEADER FLOTANTE (Fijo arriba) */
         .header-logo {
-            text-align: center; padding: 15px 0; background: rgba(255, 255, 255, 0.98);
-            position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            /* Carga la imagen de la variable 3 */
-            background-image: var(--logo-nav);
-            background-repeat: no-repeat; background-position: center; background-size: contain;
-            height: 70px; 
+            text-align: center; padding: 15px 0; background: rgba(255, 255, 255, 0.95);
+            position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            height: 70px; display: flex; justify-content: center; align-items: center;
+        }
+        .header-logo div {
+            width: 150px; height: 40px;
+            background-image: var(--logo-nav); background-size: contain; background-repeat: no-repeat; background-position: center;
         }
 
-        /* SECCIÓN 1: FOTO PRINCIPAL (HERO) */
+        /* EFECTO PARALLAX PARA LAS FOTOS */
+        .parallax {
+            background-attachment: fixed; /* Esto hace que la foto se quede quieta al scrollear */
+            background-position: center; background-repeat: no-repeat; background-size: cover;
+        }
+
+        /* SECCIÓN 1: FOTO PRINCIPAL (PLAYA) */
         .hero {
             position: relative; width: 100%; height: 85vh; margin-top: 70px;
-            background-image: var(--foto-playa); /* Carga la variable 1 */
-            background-size: cover; background-position: center 20%; /* Muestra más de arriba (los rostros) */
-            display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 20px;
+            background-image: var(--foto-playa);
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 30px;
         }
+        /* Difuminado blanco inferior para transicionar a la página */
         .hero::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25%;
-            background: linear-gradient(to top, rgba(255,255,255,1) 10%, rgba(255,255,255,0)); pointer-events: none;
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 35%;
+            background: linear-gradient(to top, var(--fondo-claro) 5%, transparent); pointer-events: none;
         }
         
-        /* Contenedor del Logo Grande sobre la foto */
-        .hero-logo-contenedor {
-            position: relative; z-index: 10;
-            width: 250px; height: 250px;
-            background-image: var(--logo-grande); /* Carga la variable 4 */
+        .hero-logo-dorado {
+            position: relative; z-index: 10; width: 220px; height: 220px; margin-bottom: 20px;
+            background-image: var(--logo-dorado);
             background-size: contain; background-repeat: no-repeat; background-position: center;
-            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.4));
         }
 
-        /* SECCIÓN 2: TEXTOS INVITACIÓN */
-        .seccion-blanca { text-align: center; padding: 50px 20px 70px; background-color: #ffffff; }
-        .titulo-invitacion { font-size: 1.6rem; letter-spacing: 5px; color: #555; }
-        .subtitulo-invitacion { font-size: 3.2rem; margin-top: -15px; }
-        .frase-texto { font-size: 1.5rem; color: #666; font-style: italic; margin-top: 50px; }
-        .frase-script { font-size: 2.8rem; margin-top: -15px; }
+        /* TEXTOS CON SUPERPOSICIÓN (Al estilo Wix) */
+        .seccion-texto { text-align: center; padding: 60px 20px; background-color: var(--fondo-claro); }
+        .titulo-serif { font-size: 1.8rem; letter-spacing: 3px; color: var(--gris-texto); text-transform: uppercase; }
+        .subtitulo-script { font-size: 3.5rem; margin-top: -25px; line-height: 1; }
+        
+        .texto-cursivo { font-size: 1.8rem; font-style: italic; color: #666; font-family: 'Cinzel', serif;}
+        .texto-script-dorado { font-size: 3rem; margin-top: -15px; }
 
         /* SECCIÓN 3: CALENDARIO Y RELOJ (OSCURO) */
-        .seccion-oscura { background-color: #141414; padding: 70px 20px; text-align: center; color: #C8A97E; }
-        .grid-calendario { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-bottom: 30px; max-width: 350px; margin: 0 auto; }
-        .dia-semana { font-weight: bold; color: #9a825e; font-size: 0.8rem; padding-bottom: 5px; border-bottom: 1px solid #333; }
-        .dia-numero { padding: 8px 0; color: #e0e0e0; font-size: 0.9rem; border-radius: 5px; }
+        .seccion-oscura { background-color: var(--fondo-oscuro); padding: 70px 20px; text-align: center; color: var(--dorado); }
+        .grid-calendario { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 40px; max-width: 320px; margin: 0 auto; }
+        .dia-semana { font-weight: bold; color: var(--dorado); font-size: 0.9rem; padding-bottom: 10px; border-bottom: 1px solid #333; }
+        .dia-numero { padding: 8px 0; color: #fff; font-size: 1rem; }
         
         @keyframes latido {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 169, 126, 0.6); }
-            50% { transform: scale(1.2); box-shadow: 0 0 12px 6px rgba(200, 169, 126, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 169, 126, 0); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(179, 155, 109, 0.6); }
+            50% { transform: scale(1.15); box-shadow: 0 0 15px 5px rgba(179, 155, 109, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(179, 155, 109, 0); }
         }
-        .fecha-objetivo-animada { background-color: #C8A97E; color: #000; font-weight: bold; border-radius: 50%; animation: latido 1.5s infinite; }
+        .dia-marcado { background-color: var(--dorado); color: var(--fondo-oscuro); font-weight: bold; border-radius: 50%; animation: latido 1.5s infinite; }
         
         .flex-reloj { display: flex; justify-content: center; gap: 10px; max-width: 350px; margin: 0 auto; }
-        .caja-reloj { border: 1px solid #C8A97E; padding: 15px 5px; border-radius: 8px; flex: 1; }
-        .num-reloj { display: block; font-size: 1.8rem; font-weight: 700; line-height: 1; color: #fff; }
-        .texto-reloj { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-top: 5px; display: block; color: #9a825e;}
+        .caja-reloj { border: 1px solid var(--dorado); padding: 15px 5px; border-radius: 4px; flex: 1; }
+        .num-reloj { display: block; font-size: 2rem; font-family: 'Cinzel', serif; font-weight: 600; line-height: 1; color: var(--dorado); }
+        .texto-reloj { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-top: 8px; display: block; color: #fff;}
 
         /* SECCIÓN 4: FOTO INTERMEDIA (ANILLOS) */
         .foto-intermedia {
-            width: 100%; height: 60vh;
-            background-image: var(--foto-anillos); /* Carga la variable 2 */
-            background-size: cover; background-position: center;
+            width: 100%; height: 70vh;
+            background-image: var(--foto-anillos);
             display: flex; align-items: center; justify-content: center;
         }
-        /* Logo grande sobre los anillos (opcional, igual que en Wix) */
-        .foto-intermedia-logo {
-            width: 200px; height: 200px;
-            background-image: var(--logo-grande);
+        .hero-logo-blanco {
+            width: 250px; height: 250px;
+            background-image: var(--logo-blanco);
             background-size: contain; background-repeat: no-repeat; background-position: center;
-            filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.5));
         }
 
         /* SECCIÓN 5: HORARIOS Y DETALLES */
-        .seccion-detalles { text-align: center; padding: 70px 20px; background-color: #ffffff; }
-        .evento { margin-bottom: 40px; }
-        .evento h4 { font-size: 1.4rem; margin-bottom: 5px; color: #333; }
-        .evento p { color: #666; font-size: 1.1rem; }
+        .evento { margin-bottom: 45px; }
+        .evento h4 { font-size: 1.4rem; margin-bottom: 8px; color: var(--gris-texto); font-weight: 400; }
+        .evento p { color: #555; font-size: 1rem; font-weight: 300; }
         
-        .caja-destacada { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 30px 0; margin: 40px 0; }
-        .caja-destacada h3 { font-size: 1.2rem; letter-spacing: 2px; color: #333; margin-bottom: 5px; }
-        .caja-destacada p { font-size: 1.6rem; font-weight: bold; color: #A68B5B; }
+        /* DRESS CODE */
+        .icono-pareja { width: 60px; height: 60px; margin: 0 auto 15px; opacity: 0.6; }
+        .dress-code-script { font-size: 3.5rem; color: var(--gris-texto); margin-top: -10px; }
 
-        .boton-confirmar {
-            display: inline-block; padding: 15px 30px; margin-top: 20px;
-            background-color: #A68B5B; color: #fff; text-decoration: none;
-            font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(166, 139, 91, 0.4);
+        /* CIERRE */
+        .valor-tarjeta { font-size: 2rem; color: var(--dorado); font-family: 'Cinzel', serif; letter-spacing: 2px; margin-top: 5px; text-shadow: 0px 1px 2px rgba(0,0,0,0.1); }
+
+        /* BOTÓN VOLVER ARRIBA */
+        .btn-arriba {
+            position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px;
+            background-color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 100; text-decoration: none;
+            opacity: 0; transition: opacity 0.3s; pointer-events: none;
         }
-
-        /* FOOTER */
-        footer { background-color: #111; color: #666; text-align: center; padding: 30px 20px; font-size: 0.8rem; letter-spacing: 1px; }
-        footer span { color: #A68B5B; font-weight: bold; }
+        .btn-arriba.visible { opacity: 1; pointer-events: auto; }
+        .btn-arriba svg { width: 20px; height: 20px; fill: #333; }
     </style>
 </head>
 <body>
 
-    <header class="header-logo"></header>
+    <header class="header-logo">
+        <div></div>
+    </header>
 
-    <section class="hero" data-aos="fade-in" data-aos-duration="1500">
-        <div class="hero-logo-contenedor animacion-flotante" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1200"></div>
+    <section class="hero parallax">
+        <div class="hero-logo-dorado" data-aos="fade-up" data-aos-duration="1500"></div>
     </section>
 
-    <section class="seccion-blanca">
-        <div data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="fuente-serif titulo-invitacion">ESTAS INVITADO</h2>
-            <h3 class="fuente-script color-dorado subtitulo-invitacion">A Nuestra Boda</h3>
+    <section class="seccion-texto">
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <h2 class="fuente-serif titulo-serif">ESTAS INVITADO</h2>
+            <h3 class="fuente-script color-dorado subtitulo-script">A Nuestra Boda</h3>
         </div>
         
-        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" style="margin-top: 60px;">
-            <p class="fuente-serif frase-texto">Celebrando nuestro amor</p>
-            <p class="fuente-script color-dorado frase-script">con quienes amamos</p>
+        <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200" style="margin-top: 60px;">
+            <p class="texto-cursivo">Celebrando nuestro amor</p>
+            <p class="fuente-script color-dorado texto-script-dorado">con quienes amamos</p>
         </div>
     </section>
 
     <section class="seccion-oscura" data-aos="fade-up" data-aos-duration="1000">
-        <h3 class="fuente-serif" style="margin-bottom: 25px; font-size: 1.2rem; letter-spacing: 3px;">MAYO 2026</h3>
+        <h3 class="fuente-serif" style="margin-bottom: 30px; font-size: 1.3rem; letter-spacing: 3px; font-weight: 600;">MAYO 2026</h3>
         
         <div class="grid-calendario">
             <div class="dia-semana">Do</div><div class="dia-semana">Lu</div><div class="dia-semana">Ma</div>
             <div class="dia-semana">Mi</div><div class="dia-semana">Ju</div><div class="dia-semana">Vi</div><div class="dia-semana">Sa</div>
             
             <div></div><div></div><div></div><div></div><div></div>
-            <div class="dia-numero">1</div><div class="dia-numero fecha-objetivo-animada">2</div><div class="dia-numero">3</div>
+            
+            <div class="dia-numero">1</div><div class="dia-numero dia-marcado">2</div><div class="dia-numero">3</div>
             <div class="dia-numero">4</div><div class="dia-numero">5</div><div class="dia-numero">6</div><div class="dia-numero">7</div>
             <div class="dia-numero">8</div><div class="dia-numero">9</div><div class="dia-numero">10</div><div class="dia-numero">11</div>
             <div class="dia-numero">12</div><div class="dia-numero">13</div><div class="dia-numero">14</div><div class="dia-numero">15</div>
@@ -172,7 +180,7 @@
             <div class="dia-numero">28</div><div class="dia-numero">29</div><div class="dia-numero">30</div><div class="dia-numero">31</div>
         </div>
 
-        <h2 class="fuente-serif" style="margin: 50px 0 20px; font-size: 1rem; letter-spacing: 2px;">FALTAN PARA EL GRAN DÍA:</h2>
+        <h2 class="fuente-serif" style="margin: 50px 0 25px; font-size: 1.1rem; letter-spacing: 2px; color: var(--dorado);">FALTAN PARA EL GRAN DÍA:</h2>
         
         <div class="flex-reloj">
             <div class="caja-reloj"><span id="dias" class="num-reloj">00</span><span class="texto-reloj">Días</span></div>
@@ -182,53 +190,59 @@
         </div>
     </section>
 
-    <section class="foto-intermedia" data-aos="fade-in" data-aos-duration="1500">
-        <div class="foto-intermedia-logo animacion-flotante" data-aos="zoom-in" data-aos-duration="1500"></div>
+    <section class="foto-intermedia parallax">
+        <div class="hero-logo-blanco" data-aos="fade-in" data-aos-duration="1500"></div>
     </section>
 
-    <section class="seccion-detalles">
+    <section class="seccion-texto">
+        <div data-aos="fade-up" data-aos-duration="1200" style="margin-bottom: 50px;">
+            <h2 class="fuente-serif titulo-serif" style="font-size: 2.2rem;">HORARIOS</h2>
+            <h3 class="fuente-script color-dorado subtitulo-script" style="font-size: 4rem;">Importantes</h3>
+        </div>
         
-        <div class="evento" data-aos="fade-up" data-aos-duration="1000">
-            <h4 class="fuente-serif">01. Ceremonia</h4>
+        <div class="evento" data-aos="fade-up" data-aos-duration="1200">
+            <h4 class="fuente-serif">01. &nbsp; Ceremonia</h4>
             <p>20:30 hs. Iglesia San Roque</p>
         </div>
         
-        <div class="evento" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
-            <h4 class="fuente-serif">02. Civil y Celebración</h4>
+        <div class="evento" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+            <h4 class="fuente-serif">02. &nbsp; Civil y Celebración</h4>
             <p>21:30 hs. Moreno 196</p>
         </div>
 
-        <div class="caja-destacada" data-aos="zoom-in" data-aos-duration="1000">
-            <h3 class="fuente-serif">DRESS CODE:</h3>
-            <p class="fuente-serif">Elegante Sport</p>
+        <div data-aos="fade-up" data-aos-duration="1200" style="margin: 60px 0;">
+            <svg class="icono-pareja" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4a4a4a" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <h2 class="fuente-serif titulo-serif" style="font-size: 1.6rem; letter-spacing: 2px;">DRESS CODE:</h2>
+            <p class="fuente-script dress-code-script">Elegante Sport</p>
         </div>
 
-        <div data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="fuente-serif" style="font-size: 1.4rem; margin-bottom: 5px;">¡Esperamos verte!</h2>
-            <p style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; color: #666;">Por Favor Confirmar Presencia</p>
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <h2 class="texto-cursivo" style="font-size: 2.2rem; margin-bottom: 5px;">¡Esperamos verte!</h2>
+            <p class="fuente-script color-dorado" style="font-size: 2.2rem; margin-top: -10px; margin-bottom: 30px;">Por Favor Confirmar Presencia</p>
             
-            <a href="#" class="boton-confirmar">Confirmar Asistencia</a>
-
-            <div style="margin-top: 40px;">
-                <p style="font-size: 0.9rem; letter-spacing: 1px; color: #555; text-transform: uppercase;">Valor de Tarjeta:</p>
-                <p style="font-size: 1.8rem; font-weight: bold; color: #333; margin-top: 5px;">$40.000</p>
+            <div style="margin-top: 50px;">
+                <p class="fuente-serif" style="font-size: 1.2rem; letter-spacing: 1px; color: var(--gris-texto);">VALOR DE TARJETA:</p>
+                <p class="valor-tarjeta">$40.000</p>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>CREADO POR <span>NovaBit Media</span> PARA PEDRO & MELANI</p>
-    </footer>
+    <a href="#" class="btn-arriba" id="btnArriba">
+        <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </a>
+
+    <br><br>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // 1. Inicia las animaciones de Scroll (Fade up suave)
         AOS.init({ once: true, offset: 50 });
 
-        const fechaObjetivo = new Date("May 2, 2026 15:30:00").getTime();
+        // 2. Motor de la Cuenta Regresiva
+        const fechaObjetivo = new Date("May 2, 2026 20:30:00").getTime();
         setInterval(function() {
             const ahora = new Date().getTime();
             const distancia = fechaObjetivo - ahora;
-            
             if (distancia > 0) {
                 const format = (num) => num < 10 ? "0" + num : num;
                 document.getElementById("dias").innerText = format(Math.floor(distancia / (1000 * 60 * 60 * 24)));
@@ -237,7 +251,20 @@
                 document.getElementById("segundos").innerText = format(Math.floor((distancia % (1000 * 60)) / 1000));
             }
         }, 1000);
+
+        // 3. Lógica del botón "Volver Arriba"
+        const btnArriba = document.getElementById("btnArriba");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                btnArriba.classList.add("visible");
+            } else {
+                btnArriba.classList.remove("visible");
+            }
+        };
+        btnArriba.addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
     </script>
 </body>
 </html>
-
