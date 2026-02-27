@@ -2,48 +2,45 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Invitación Pedro & Melani</title>
     
     <style>
-        /* 1. Reset total: elimina márgenes y bloquea el rebote (overscroll) del navegador */
-        html, body {
+        body, html {
             margin: 0;
             padding: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #ffffff; /* Fondo blanco para disimular bordes */
-            overflow: hidden; 
-            overscroll-behavior: none; /* Clave para bloquear el efecto rebote */
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff; /* Color de fondo en caso de rebote nativo */
+            overflow: hidden; /* Bloquea el scroll general */
         }
 
-        /* 2. Un contenedor fijo que actúa como una ventana estricta */
-        .contenedor-iframe {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
+        /* 1. Este contenedor es el que va a permitir bajar y subir, NO el iframe */
+        .scroll-nativo {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto; 
+            -webkit-overflow-scrolling: touch; /* Scroll suave para iPhone */
+            overscroll-behavior: none; /* Bloquea el rebote en navegadores modernos */
         }
 
-        /* 3. El iframe forzado al ancho de la pantalla y desplazado hacia arriba */
+        /* 2. El iframe se hace gigante para que no scrollee por dentro */
         iframe {
-            position: absolute;
-            top: -50px; /* Ajuste para esconder la barra (puedes probar -55px si aún se asoma) */
-            left: 0;
-            width: 100vw; /* Fuerza a que ocupe todo el ancho del celular, quitando franjas negras */
-            height: calc(100vh + 50px);
+            width: 100%;
+            /* IMPORTANTE: Este número debe ser igual a la altura total de tu página. */
+            height: 4500px; 
             border: none;
             margin: 0;
             padding: 0;
+            margin-top: -50px; /* Sigue ocultando la barra de Wix permanentemente */
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <div class="contenedor-iframe">
-        <iframe src="https://nems07.wixsite.com/pmboda"></iframe>
+    <div class="scroll-nativo">
+        <iframe scrolling="no" src="https://nemsar.github.io/BodaPM/"></iframe>
     </div>
 
 </body>
