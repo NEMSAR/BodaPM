@@ -2,38 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Invitación Pedro & Melani</title>
     
     <style>
+        /* Bloqueamos el scroll del cuerpo de la página para evitar saltos */
         html, body {
             margin: 0;
             padding: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #141414; /* Fondo oscuro para que combine si hay un pequeño rebote */
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
             overflow: hidden; 
-            overscroll-behavior: none; 
         }
 
+        /* Un contenedor absoluto que empuja la web hacia arriba de forma segura */
         .contenedor-iframe {
-            position: fixed;
-            top: 0;
+            position: absolute;
+            top: -50px; /* Aquí escondemos la etiqueta de Wix */
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: calc(100% + 50px); /* Compensamos los 50px que subimos */
         }
 
+        /* El iframe ocupa todo el espacio del contenedor */
         iframe {
-            position: absolute;
-            top: -50px; /* Sigue ocultando la barra en el 99% del tiempo */
-            left: 0;
-            width: 100vw; 
-            height: calc(100vh + 50px);
+            width: 100%;
+            height: 100%;
             border: none;
-            margin: 0;
-            padding: 0;
+            display: block;
         }
     </style>
 </head>
