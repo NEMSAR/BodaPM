@@ -20,6 +20,7 @@
             --logo-nav: url('https://i.imgur.com/IsTeI2i.png');
             --logo-dorado: url('https://i.imgur.com/leY1tlm.png');
             --logo-blanco: url('https://i.imgur.com/AHU2iQP.png');
+            --logo-novabit: url('https://i.imgur.com/sLjTr4A.png');
 
             /* PALETA DE COLORES (No tocar si te gustan los actuales) */
             --dorado: #b39b6d;
@@ -172,6 +173,17 @@
         footer { background-color: #050505; color: #777; text-align: center; padding: 50px 20px; font-size: 0.8rem; line-height: 1.8; border-top: 4px solid var(--dorado); position: relative; z-index: 2; letter-spacing: 1px;}
         footer span { color: var(--dorado-brillante); font-weight: 700; text-transform: uppercase;}
 
+.logo-footer {
+    width: 120px;
+    height: 35px;
+    background-image: var(--logo-novabit);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto 15px auto;
+    opacity: 0.9;
+}
+        
         /* BOTÓN FLOTANTE DE MÚSICA */
         .btn-musica {
             position: fixed; bottom: 25px; left: 25px; width: 50px; height: 50px;
@@ -351,8 +363,9 @@
     </section>
 
     <footer>
-        <p>Creado por <span>NovaBit Media</span> exclusivamente para Pedro y Melani.<br>© Todos los Derechos Reservados.</p>
-    </footer>
+    <div class="logo-footer"></div>
+    <p>Creado por <span>NovaBit Media</span> exclusivamente para Pedro y Melani.<br>© Todos los Derechos Reservados.</p>
+</footer>
 
     <a href="#" class="btn-arriba" id="btnArriba">
         <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
@@ -470,6 +483,7 @@
     </script>
 </body>
 </html>
+
 
 
 
