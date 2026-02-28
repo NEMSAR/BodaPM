@@ -20,7 +20,7 @@
             --logo-nav: url('https://i.imgur.com/IsTeI2i.png');
             --logo-dorado: url('https://i.imgur.com/leY1tlm.png');
             --logo-blanco: url('https://i.imgur.com/AHU2iQP.png');
-            --logo-novabit: url('https://i.imgur.com/sLjTr4A.png');
+            --logo-novabit: url('https://i.imgur.com/OewR6Zz.png');
 
             /* PALETA DE COLORES (No tocar si te gustan los actuales) */
             --dorado: #b39b6d;
@@ -173,16 +173,16 @@
         footer { background-color: #050505; color: #777; text-align: center; padding: 50px 20px; font-size: 0.8rem; line-height: 1.8; border-top: 4px solid var(--dorado); position: relative; z-index: 2; letter-spacing: 1px;}
         footer span { color: var(--dorado-brillante); font-weight: 700; text-transform: uppercase;}
 
-/* ESTILO DEL LOGO NOVABIT (TAMAÑO AUMENTADO) */
+/* ESTILO DEL LOGO NOVABIT (TAMAÑO DEFINITIVO) */
 .logo-footer {
-    width: 220px;  /* ¡Mucho más grande! Antes era 120px */
-    height: 80px;   /* Proporcional al ancho. Antes era 35px */
+    width: 300px; /* ANCHO MUCHO MAYOR (casi todo el celular) */
+    height: 120px;  /* ALTURA MAYOR para que no quede apretado */
     background-image: var(--logo-novabit);
-    background-size: contain;
+    background-size: contain; /* Muestra el logo entero sin cortarlo */
     background-repeat: no-repeat;
     background-position: center;
-    margin: 0 auto 20px auto; /* Un poquito más de espacio abajo */
-    opacity: 1; /* Le quitamos la transparencia para que brille al 100% */
+    margin: 0 auto 5px auto; /* REDUCIDO: Menos espacio debajo (pegado al texto) */
+    opacity: 1;
 }
         
         /* BOTÓN FLOTANTE DE MÚSICA */
@@ -484,6 +484,7 @@
     </script>
 </body>
 </html>
+
 
 
 
