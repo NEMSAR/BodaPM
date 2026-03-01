@@ -343,6 +343,23 @@
         }
         .texto-regalo { font-size: 1.05rem; color: #555; line-height: 1.6; font-style: italic; margin-bottom: 25px; }
         .icono-regalo { width: 50px; height: 50px; fill: var(--dorado); margin-bottom: 15px; }
+
+        /* ================= BOTÓN GPS ELEGANTE ================= */
+        .btn-gps {
+            display: inline-flex; align-items: center; justify-content: center;
+            margin-top: 15px; padding: 10px 22px; margin-left: 45px; /* Se alinea perfecto con el texto */
+            background: rgba(179, 155, 109, 0.05); /* Fondo muy sutil */
+            border: 1px solid var(--dorado); border-radius: 30px;
+            color: var(--dorado); text-decoration: none; font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
+            transition: all 0.2s ease;
+        }
+        .btn-gps:active {
+            background: var(--dorado); color: #fff; transform: scale(0.96);
+        }
+        .btn-gps svg {
+            width: 18px; height: 18px; fill: currentColor; margin-right: 8px;
+        }
     </style>
 </head>
 <body>
@@ -439,7 +456,14 @@
         
         <div class="tarjeta-evento" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
             <h4 class="fuente-serif"><span class="num-evento">02.</span> Civil y Celebración</h4>
-            <p>21:30 hs. Camping La Colonia</p>
+            <p>21:30 hs. Camping La Colonia, Recreo</p>
+            
+            <a href="https://www.google.com/maps/search/?api=1&query=Camping+La+Colonia,+Recreo,+Catamarca" target="_blank" class="btn-gps">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                ¿Cómo llegar?
+            </a>
         </div>
     </section>
 
@@ -639,6 +663,7 @@
     </script>
 </body>
 </html>
+
 
 
 
