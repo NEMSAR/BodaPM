@@ -14,7 +14,7 @@
         :root {
             /* FOTOS DE FONDO */
             --foto-playa: url('https://i.imgur.com/U7LXDjL.png');
-            --foto-anillos: url('https://i.imgur.com/McA6bCD.png');
+            --foto-anillos: url('https://i.imgur.com/fPJEeEs.jpeg');
             
             /* LOGOS */
             --logo-nav: url('https://i.imgur.com/IsTeI2i.png');
@@ -289,6 +289,28 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(179, 155, 109, 0.5)); }
         }
+
+        /* ================= NUEVOS ESTILOS: ALIAS Y REGALOS ================= */
+        
+        /* Aclaración "Por Persona" */
+        .texto-por-persona { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: #777; margin-top: -5px; }
+
+        /* Cajita destacada para el Alias */
+        .caja-alias {
+            background: rgba(179, 155, 109, 0.05); border: 2px dashed var(--dorado); border-radius: 12px;
+            padding: 15px 20px; margin: 20px auto 0; max-width: 280px; transition: transform 0.2s;
+        }
+        .alias-titulo { font-size: 0.75rem; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-bottom: 5px; font-weight: 600; }
+        .alias-texto { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; color: var(--gris-oscuro); letter-spacing: 1px; }
+
+        /* Tarjeta de Regalo */
+        .tarjeta-regalo {
+            background: #ffffff; border: 1px solid rgba(179, 155, 109, 0.2); border-radius: 16px;
+            padding: 40px 25px; margin: 0 auto; max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .texto-regalo { font-size: 1.05rem; color: #555; line-height: 1.6; font-style: italic; margin-bottom: 25px; }
+        .icono-regalo { width: 50px; height: 50px; fill: var(--dorado); margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -397,7 +419,7 @@
         </div>
     </section>
 
-    <section class="franja-blanca" style="padding-bottom: 90px;">
+    <section class="franja-blanca">
         <div data-aos="fade-up" data-aos-duration="1200">
             <h2 class="texto-cursivo" style="font-size: 2.4rem; margin-bottom: 10px;">¡Esperamos verte!</h2>
             <p class="fuente-script color-dorado" style="font-size: 2.6rem; margin-top: -15px;">Por Favor Confirmar Presencia</p>
@@ -407,7 +429,6 @@
                     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     WhatsApp Pedro
                 </a>
-                
                 <a href="https://wa.me/00000000000?text=Hola%20Melani%2C%20%C2%A1Felicitaciones!%20Confirmo%20mi%20asistencia%20a%20su%20boda.%20%C2%A1Nos%20vemos%20el%202%20de%20mayo!" class="btn-wp" target="_blank">
                     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     WhatsApp Melani
@@ -420,6 +441,28 @@
                     <div class="animacion-rebote">
                         <p class="valor-tarjeta">$40.000</p>
                     </div>
+                    <p class="texto-por-persona">Por persona</p>
+                    
+                    <div class="caja-alias">
+                        <p class="alias-titulo">Alias para transferencia</p>
+                        <p class="alias-texto">melani.pedro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="franja-gris" style="padding-bottom: 90px;">
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <svg class="icono-regalo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <h2 class="fuente-serif titulo-serif" style="font-size: 1.8rem; margin-bottom: 30px;">MESA DE REGALOS</h2>
+            
+            <div class="tarjeta-regalo" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="150">
+                <p class="texto-regalo">"Su presencia en este día tan especial es el regalo más importante para nosotros. Si desean acompañarnos con algún detalle, sabremos apreciarlo."</p>
+                
+                <div class="caja-alias" style="background: #fff;">
+                    <p class="alias-titulo">Alias para aportes</p>
+                    <p class="alias-texto">melani.pedro</p>
                 </div>
             </div>
         </div>
@@ -560,6 +603,7 @@
     </script>
 </body>
 </html>
+
 
 
 
