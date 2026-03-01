@@ -177,6 +177,30 @@
         .btn-wp:active { transform: scale(0.98); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); }
         .btn-wp svg { width: 26px; height: 26px; fill: #fff; margin-right: 12px; }
 
+/* ================= ALERTA DE FECHA LÍMITE ================= */
+        .alerta-limite {
+            background-color: rgba(179, 155, 109, 0.08);
+            border: 1px solid rgba(179, 155, 109, 0.4);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 30px auto 0;
+            max-width: 320px;
+            color: var(--gris-oscuro);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        .alerta-limite span {
+            color: var(--dorado);
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            display: block;
+            margin-top: 5px;
+            text-shadow: 0px 1px 2px rgba(0,0,0,0.05);
+        }
+        
         /* FOOTER */
         footer { background-color: #050505; color: #777; text-align: center; padding: 50px 20px; font-size: 0.8rem; line-height: 1.8; border-top: 4px solid var(--dorado); position: relative; z-index: 2; letter-spacing: 1px;}
         footer span { color: var(--dorado-brillante); font-weight: 700; text-transform: uppercase;}
@@ -443,6 +467,12 @@
                 </a>
             </div>
 
+            <div class="alerta-limite" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                Fecha límite de confirmación: 
+                <span>25 de Marzo</span>
+            </div>
+            
+            <div style="margin-bottom: 40px;"></div>
           
 
     <section class="franja-gris" style="padding-bottom: 90px;">
