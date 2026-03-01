@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Boda Pedro & Melani</title>
+    <meta property="og:title" content="💍 ¡Nos Casamos! Pedro & Melani">
+    <meta property="og:description" content="Nuestra historia continúa y queremos que seas parte. Toca aquí para abrir tu invitación especial.">
+    <meta property="og:image" content="https://i.imgur.com/QKtu3Q5.png">
+    <meta property="og:url" content="https://nemsar.github.io/BodaPM/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Invitación Pedro & Melani">
+
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* FOTOS DE FONDO */
+            --foto-playa: url('https://i.imgur.com/U7LXDjL.png');
+            --foto-anillos: url('https://i.imgur.com/fPJEeEs.jpeg');
+            
+            /* LOGOS */
+            --logo-nav: url('https://i.imgur.com/IsTeI2i.png');
+            --logo-dorado: url('https://i.imgur.com/leY1tlm.png');
+            --logo-blanco: url('https://i.imgur.com/AHU2iQP.png');
+            --logo-novabit: url('https://i.imgur.com/OewR6Zz.png');
+
+            /* PALETA DE COLORES (No tocar si te gustan los actuales) */
+            --dorado: #b39b6d;
+            --dorado-brillante: #d4c098; /* Para los destellos */
+            --gris-oscuro: #333333;
+            --fondo-blanco: #ffffff;
+            --fondo-gris-claro: #f9f9f9;
+            --wp-verde: #25D366;
+        }
+    </style>
+    <style>
+        /* RESET Y BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--fondo-blanco); color: var(--gris-oscuro); overflow-x: hidden; position: relative; }
+
+        /* TIPOGRAFÍAS */
+        .fuente-serif { font-family: 'Cinzel', serif; }
+        .fuente-script { font-family: 'Great Vibes', cursive; }
+        .color-dorado { color: var(--dorado); } 
+
+        /* ================= ANIMACIONES ================= */
+        
+        /* Giro 3D para Logos */
+        @keyframes giro-3d {
+            0% { transform: perspective(600px) rotateY(0deg); }
+            100% { transform: perspective(600px) rotateY(360deg); }
+        }
+        .animacion-giro { animation: giro-3d 10s linear infinite; }
+        .animacion-giro-lento { animation: giro-3d 14s linear infinite; }
+
+        /* Rebote con Pausa para el Precio */
+        @keyframes rebote-pausa {
+            0%, 20%, 40%, 100% { transform: translateY(0); }
+            10% { transform: translateY(-15px); }
+            30% { transform: translateY(-7px); }
+        }
+        .animacion-rebote { animation: rebote-pausa 2.5s infinite; display: inline-block; }
+
+        /* Latido Calendario */
+        @keyframes latido {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(179, 155, 109, 0.6); }
+            50% { transform: scale(1.15); box-shadow: 0 0 15px 5px rgba(179, 155, 109, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(179, 155, 109, 0); }
+        }
+
+        /* ================= ESTRUCTURA ================= */
+
+        /* HEADER FIJO */
+        .header-logo {
+            text-align: center; background: rgba(255, 255, 255, 0.98);
+            position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            height: 70px; display: flex; justify-content: center; align-items: center;
+            backdrop-filter: blur(5px); /* Efecto vidrio esmerilado moderno */
+        }
+        .logo-nav-img {
+            width: 140px; height: 45px;
+            background-image: var(--logo-nav); background-size: contain; background-repeat: no-repeat; background-position: center;
+        }
+
+        /* FOTOS PARALLAX Y CORRECCIÓN MÓVIL */
+        .parallax { 
+            background-attachment: fixed; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-size: cover; 
+        }
+        
+        /* El salvavidas para que las fotos se vean bien en celulares */
+        @media (max-width: 850px) {
+            .parallax { background-attachment: scroll; }
+            .hero { background-position: center 30%; } /* Enfoca rostros en playa */
+            .foto-intermedia { background-position: center center; } /* Centra anillos */
+        }
+        
+        .hero {
+            position: relative; width: 100%; height: 85vh; margin-top: 70px; background-image: var(--foto-playa);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 25%;
+            background: linear-gradient(to top, var(--fondo-blanco) 10%, transparent); pointer-events: none;
+        }
+        .logo-hero-dorado {
+            position: relative; z-index: 10; width: 230px; height: 230px; margin-top: 120px;
+            background-image: var(--logo-dorado); background-size: contain; background-repeat: no-repeat; background-position: center;
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.3));
+        }
+
+        /* FRANJAS DE CONTENIDO */
+        .franja-blanca { background-color: var(--fondo-blanco); text-align: center; padding: 80px 20px; position: relative; z-index: 2; }
+        .franja-gris { background-color: var(--fondo-gris-claro); text-align: center; padding: 80px 20px; position: relative; z-index: 2; border-top: 1px solid #eee; border-bottom: 1px solid #eee;}
+
+        .titulo-serif { font-size: 1.8rem; letter-spacing: 4px; color: var(--gris-oscuro); text-transform: uppercase; font-weight: 600; }
+        .subtitulo-script { font-size: 3.8rem; margin-top: -20px; line-height: 1; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
+        .texto-cursivo { font-size: 1.9rem; font-style: italic; color: #666; font-family: 'Cinzel', serif; }
+        .texto-script-dorado { font-size: 3.2rem; margin-top: -15px; }
+
+        /* SECCIÓN OSCURA: CALENDARIO Y RELOJ */
+        .seccion-oscura { background-color: #0a0a0a; padding: 80px 20px; text-align: center; color: var(--dorado); position: relative; z-index: 2; }
+        .grid-calendario { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 40px; max-width: 340px; margin: 0 auto; }
+        .dia-semana { font-weight: 600; color: var(--dorado); font-size: 0.9rem; padding-bottom: 12px; border-bottom: 1px solid #333; letter-spacing: 1px; }
+        .dia-numero { padding: 10px 0; color: #fff; font-size: 1.05rem; font-weight: 500; }
+        .dia-marcado { background: linear-gradient(135deg, var(--dorado), var(--dorado-brillante)); color: #000; font-weight: 800; border-radius: 50%; animation: latido 1.8s infinite; box-shadow: 0 0 10px rgba(179, 155, 109, 0.3); }
+        
+        .flex-reloj { display: flex; justify-content: center; gap: 12px; max-width: 360px; margin: 0 auto; }
+        .caja-reloj { border: 1px solid rgba(179, 155, 109, 0.5); padding: 18px 5px; border-radius: 8px; flex: 1; background: rgba(179, 155, 109, 0.03); backdrop-filter: blur(2px); }
+        .num-reloj { display: block; font-size: 2.1rem; font-family: 'Cinzel', serif; font-weight: 700; color: var(--dorado-brillante); line-height: 1; }
+        .texto-reloj { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-top: 8px; display: block; color: #aaa; letter-spacing: 1px; }
+
+        /* FOTO INTERMEDIA */
+        .foto-intermedia { width: 100%; height: 70vh; background-image: var(--foto-anillos); display: flex; align-items: center; justify-content: center; }
+        .logo-hero-blanco {
+            width: 250px; height: 250px; background-image: var(--logo-blanco);
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.5));
+        }
+
+        /* TARJETAS DE HORARIOS (NUEVO DISEÑO PREMIUM) */
+        .tarjeta-evento {
+            background: #ffffff; border: 1px solid rgba(179, 155, 109, 0.15); border-radius: 12px; padding: 25px 20px; margin: 0 auto 30px;
+            max-width: 380px; box-shadow: 0 15px 35px rgba(0,0,0,0.04); position: relative; overflow: hidden; text-align: left;
+        }
+        .tarjeta-evento::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--dorado), var(--dorado-brillante), var(--dorado)); }
+        .tarjeta-evento h4 { font-size: 1.5rem; margin-bottom: 8px; color: var(--dorado); font-weight: 700; display: flex; align-items: center; }
+        .tarjeta-evento p { color: var(--gris-oscuro); font-size: 1.15rem; font-weight: 500; padding-left: 45px; }
+        .num-evento { font-size: 2rem; margin-right: 10px; opacity: 0.3; font-family: 'Cinzel', serif; }
+        
+        /* DRESS CODE */
+        .icono-pareja { width: 65px; height: 65px; margin: 0 auto 10px; opacity: 0.8; fill: var(--gris-oscuro); }
+
+        /* VALOR TARJETA */
+        .caja-valor {
+            margin-top: 30px; padding: 30px; border-radius: 16px; background: #ffffff;
+            box-shadow: 0 15px 40px rgba(179, 155, 109, 0.1); display: inline-block; width: 90%; max-width: 350px; border: 1px solid rgba(179, 155, 109, 0.2);
+        }
+        .valor-tarjeta { font-size: 3.2rem; color: var(--dorado); font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1px; line-height: 1.1; }
+
+        /* BOTONES WHATSAPP INTELIGENTES */
+        .contenedor-botones { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 35px; }
+        .btn-wp {
+            display: flex; align-items: center; justify-content: center; width: 90%; max-width: 300px;
+            background: linear-gradient(135deg, var(--wp-verde), #1ebe5d); color: #fff; text-decoration: none;
+            padding: 16px 20px; border-radius: 50px; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.5px;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transition: all 0.2s ease; position: relative; overflow: hidden; z-index: 2;
+        }
+        .btn-wp:active { transform: scale(0.98); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); }
+        .btn-wp svg { width: 26px; height: 26px; fill: #fff; margin-right: 12px; }
+
+        /* FOOTER */
+        footer { background-color: #050505; color: #777; text-align: center; padding: 50px 20px; font-size: 0.8rem; line-height: 1.8; border-top: 4px solid var(--dorado); position: relative; z-index: 2; letter-spacing: 1px;}
+        footer span { color: var(--dorado-brillante); font-weight: 700; text-transform: uppercase;}
+
+/* ESTILO DEL LOGO NOVABIT (TAMAÑO DEFINITIVO) */
+.logo-footer {
+    width: 220px; /* ANCHO MUCHO MAYOR (casi todo el celular) */
+    height: 80px;  /* ALTURA MAYOR para que no quede apretado */
+    background-image: var(--logo-novabit);
+    background-size: contain; /* Muestra el logo entero sin cortarlo */
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto 5px auto; /* REDUCIDO: Menos espacio debajo (pegado al texto) */
+    opacity: 1;
+}
+        
+        /* BOTÓN FLOTANTE DE MÚSICA */
+        .btn-musica {
+            position: fixed; bottom: 25px; left: 25px; width: 50px; height: 50px;
+            background-color: var(--fondo-blanco); border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); z-index: 90; border: 1px solid var(--dorado);
+            cursor: pointer; transition: all 0.3s; color: var(--dorado);
+        }
+        .btn-musica:active { transform: scale(0.9); }
+        .animacion-latido-musica {
+            animation: latido-musica 2s infinite;
+        }
+        @keyframes latido-musica {
+            0% { box-shadow: 0 0 0 0 rgba(179, 155, 109, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(179, 155, 109, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(179, 155, 109, 0); }
+        }
+        
+        /* BOTÓN VOLVER ARRIBA */
+        .btn-arriba {
+            position: fixed; bottom: 25px; right: 25px; width: 50px; height: 50px;
+            background-color: var(--fondo-blanco); border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); z-index: 90; text-decoration: none; opacity: 0; pointer-events: none; transition: all 0.3s; border: 1px solid #eee;
+        }
+        .btn-arriba.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .btn-arriba:active { transform: scale(0.9); }
+        .btn-arriba svg { width: 24px; height: 24px; fill: var(--dorado); }
+
+        /* ============================================================== */
+        /* ⬇️ CSS DEL EFECTO "LLUVIA DORADA" (SI NO TE GUSTA, BORRA DESDE AQUÍ) ⬇️ */
+        /* ============================================================== */
+        #contenedor-destellos {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; /* Para que no interfiera con los clics */
+            z-index: 1; /* Queda detrás del contenido principal pero sobre el fondo */
+            overflow: hidden;
+        }
+        .destello {
+            position: absolute;
+            width: 3px; height: 3px; /* Tamaño de las chispas */
+            background-color: var(--dorado-brillante);
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 4px 1px rgba(212, 192, 152, 0.4); /* Brillo sutil */
+            animation: caer linear infinite;
+        }
+        @keyframes caer {
+            0% { opacity: 0; transform: translateY(-10vh) translateX(-5px) rotate(0deg); }
+            20% { opacity: 0.7; }
+            80% { opacity: 0.7; }
+            100% { opacity: 0; transform: translateY(110vh) translateX(5px) rotate(180deg); }
+        }
+        /* ============================================================== */
+        /* ⬆️ HASTA AQUÍ EL CSS DE LA LLUVIA ⬆️ */
+        /* ============================================================== */
+
+        /* ================= PANTALLA DE APERTURA ================= */
+        .pantalla-apertura {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: var(--fondo-blanco);
+            z-index: 999999; /* Por encima de absolutamente todo */
+            display: flex; justify-content: center; align-items: center;
+            /* Esta es la animación que levanta el telón suavemente */
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
+        }
+        .pantalla-apertura.oculta {
+            transform: translateY(-100vh); /* Desliza todo hacia arriba */
+            opacity: 0; pointer-events: none;
+        }
+        
+        .cuadro-apertura {
+            text-align: center; padding: 40px 30px;
+            background: #fff; border: 1px solid rgba(179, 155, 109, 0.3);
+            border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            max-width: 85%; width: 350px;
+            animation: flotar-cuadro 4s ease-in-out infinite; /* Animación de flote */
+        }
+        
+        .icono-animado-apertura {
+            margin-bottom: 20px;
+            animation: latido-pareja 2s infinite; /* Animación de latido */
+        }
+        
+        .texto-apertura {
+            font-size: 1.2rem; color: var(--gris-oscuro); letter-spacing: 2px;
+            line-height: 1.4; margin-bottom: 30px;
+        }
+        
+        .btn-abrir {
+            padding: 15px 35px; background: linear-gradient(135deg, var(--dorado), var(--dorado-brillante));
+            color: #fff; border: none; border-radius: 50px; font-family: 'Montserrat', sans-serif;
+            font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;
+            cursor: pointer; box-shadow: 0 8px 20px rgba(179, 155, 109, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-abrir:active { transform: scale(0.95); box-shadow: 0 4px 10px rgba(179, 155, 109, 0.3); }
+
+        @keyframes flotar-cuadro {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes latido-pareja {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(179, 155, 109, 0.5)); }
+        }
+
+        /* ================= NUEVOS ESTILOS: ALIAS Y REGALOS ================= */
+        
+        /* Aclaración "Por Persona" */
+        .texto-por-persona { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: #777; margin-top: -5px; }
+
+        /* Cajita destacada para el Alias */
+        .caja-alias {
+            background: rgba(179, 155, 109, 0.05); border: 2px dashed var(--dorado); border-radius: 12px;
+            padding: 15px 20px; margin: 20px auto 0; max-width: 280px; transition: transform 0.2s;
+        }
+        .alias-titulo { font-size: 0.75rem; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-bottom: 5px; font-weight: 600; }
+        .alias-texto { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; color: var(--gris-oscuro); letter-spacing: 1px; }
+
+        /* Tarjeta de Regalo */
+        .tarjeta-regalo {
+            background: #ffffff; border: 1px solid rgba(179, 155, 109, 0.2); border-radius: 16px;
+            padding: 40px 25px; margin: 0 auto; max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .texto-regalo { font-size: 1.05rem; color: #555; line-height: 1.6; font-style: italic; margin-bottom: 25px; }
+        .icono-regalo { width: 50px; height: 50px; fill: var(--dorado); margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div id="pantalla-apertura" class="pantalla-apertura">
+        <div class="cuadro-apertura">
+            <div class="icono-animado-apertura">
+                <svg viewBox="0 0 512 512" width="70" height="70" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="var(--dorado)" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/>
+                    <path fill="#fff" d="M344 144c-22.1 0-40 17.9-40 40s17.9 40 40 40 40-17.9 40-40-17.9-40-40-40zm-176 0c-22.1 0-40 17.9-40 40s17.9 40 40 40 40-17.9 40-40-17.9-40-40-40z"/>
+                </svg>
+            </div>
+            <h2 class="fuente-serif texto-apertura">Esta invitación especial<br><span class="fuente-script color-dorado" style="font-size: 2.5rem; text-transform: lowercase;">es para ti</span></h2>
+            <button id="btnAbrir" class="btn-abrir">Abrir Invitación</button>
+        </div>
+    </div>
+<audio id="musicaFondo" loop>
+        <source src="BenjaminAmadeoParaSiempre.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="btnMusica" class="btn-musica animacion-latido-musica">
+        <svg id="icono-play" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <svg id="icono-pausa" viewBox="0 0 24 24" width="24" height="24" style="display: none;"><path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+    </button>
+    <div id="contenedor-destellos"></div>
+
+    <header class="header-logo">
+        <div class="logo-nav-img animacion-giro-lento"></div>
+    </header>
+
+    <section class="hero parallax">
+        <div data-aos="fade-up" data-aos-duration="1500">
+            <div class="logo-hero-dorado animacion-giro"></div>
+        </div>
+    </section>
+
+    <section class="franja-blanca">
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <h2 class="fuente-serif titulo-serif">ESTAS INVITADO</h2>
+            <h3 class="fuente-script color-dorado subtitulo-script">A Nuestra Boda</h3>
+        </div>
+    </section>
+
+    <section class="franja-gris">
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <p class="texto-cursivo">Celebrando nuestro amor</p>
+            <p class="fuente-script color-dorado texto-script-dorado">con quienes amamos</p>
+        </div>
+    </section>
+
+    <section class="seccion-oscura" data-aos="fade-up" data-aos-duration="1000">
+        <h3 class="fuente-serif" style="margin-bottom: 30px; font-size: 1.4rem; letter-spacing: 3px; font-weight: 700;">MAYO 2026</h3>
+        
+        <div class="grid-calendario">
+            <div class="dia-semana">Do</div><div class="dia-semana">Lu</div><div class="dia-semana">Ma</div>
+            <div class="dia-semana">Mi</div><div class="dia-semana">Ju</div><div class="dia-semana">Vi</div><div class="dia-semana">Sa</div>
+            
+            <div></div><div></div><div></div><div></div><div></div>
+            <div class="dia-numero">1</div><div class="dia-numero dia-marcado">2</div><div class="dia-numero">3</div>
+            <div class="dia-numero">4</div><div class="dia-numero">5</div><div class="dia-numero">6</div><div class="dia-numero">7</div>
+            <div class="dia-numero">8</div><div class="dia-numero">9</div><div class="dia-numero">10</div><div class="dia-numero">11</div>
+            <div class="dia-numero">12</div><div class="dia-numero">13</div><div class="dia-numero">14</div><div class="dia-numero">15</div>
+            <div class="dia-numero">16</div><div class="dia-numero">17</div><div class="dia-numero">18</div><div class="dia-numero">19</div>
+            <div class="dia-numero">20</div><div class="dia-numero">21</div><div class="dia-numero">22</div><div class="dia-numero">23</div>
+            <div class="dia-numero">24</div><div class="dia-numero">25</div><div class="dia-numero">26</div><div class="dia-numero">27</div>
+            <div class="dia-numero">28</div><div class="dia-numero">29</div><div class="dia-numero">30</div><div class="dia-numero">31</div>
+        </div>
+
+        <h2 class="fuente-serif" style="margin: 60px 0 25px; font-size: 1.2rem; letter-spacing: 3px; color: var(--dorado); font-weight: 600;">FALTAN PARA EL GRAN DÍA:</h2>
+        
+        <div class="flex-reloj">
+            <div class="caja-reloj"><span id="dias" class="num-reloj">00</span><span class="texto-reloj">Días</span></div>
+            <div class="caja-reloj"><span id="horas" class="num-reloj">00</span><span class="texto-reloj">Hrs</span></div>
+            <div class="caja-reloj"><span id="minutos" class="num-reloj">00</span><span class="texto-reloj">Min</span></div>
+            <div class="caja-reloj"><span id="segundos" class="num-reloj">00</span><span class="texto-reloj">Seg</span></div>
+        </div>
+    </section>
+
+    <section class="foto-intermedia parallax">
+        <div data-aos="fade-in" data-aos-duration="1500">
+            <div class="logo-hero-blanco animacion-giro"></div>
+        </div>
+    </section>
+
+    <section class="franja-blanca">
+        <div data-aos="fade-up" data-aos-duration="1200" style="margin-bottom: 60px;">
+            <h2 class="fuente-serif titulo-serif" style="font-size: 2.2rem;">HORARIOS</h2>
+            <h3 class="fuente-script color-dorado subtitulo-script" style="font-size: 4.2rem;">Importantes</h3>
+        </div>
+        
+        <div class="tarjeta-evento" data-aos="fade-up" data-aos-duration="1000">
+            <h4 class="fuente-serif"><span class="num-evento">01.</span> Ceremonia</h4>
+            <p>20:30 hs. Iglesia San Roque</p>
+        </div>
+        
+        <div class="tarjeta-evento" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+            <h4 class="fuente-serif"><span class="num-evento">02.</span> Civil y Celebración</h4>
+            <p>21:30 hs. Moreno 196</p>
+        </div>
+    </section>
+
+    <section class="franja-gris">
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <svg class="icono-pareja" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <h2 class="fuente-serif titulo-serif" style="font-size: 1.8rem;">DRESS CODE:</h2>
+            <p class="fuente-script" style="font-size: 3.8rem; color: var(--gris-oscuro); margin-top: -10px;">Elegante Sport</p>
+        </div>
+    </section>
+
+    <section class="franja-blanca">
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <h2 class="texto-cursivo" style="font-size: 2.4rem; margin-bottom: 10px;">¡Esperamos verte!</h2>
+            <p class="fuente-script color-dorado" style="font-size: 2.6rem; margin-top: -15px;">Por Favor Confirmar Presencia</p>
+            
+            <div class="contenedor-botones">
+                <a href="https://w.app/kv9uh7" class="btn-wp" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    WhatsApp Pedro
+                </a>
+                <a href="https://w.app/m7euhs" class="btn-wp" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    WhatsApp Melani
+                </a>
+            </div>
+
+          
+
+    <section class="franja-gris" style="padding-bottom: 90px;">
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <svg class="icono-regalo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <h2 class="fuente-serif titulo-serif" style="font-size: 1.8rem; margin-bottom: 30px;">MESA DE REGALOS</h2>
+            
+            <div class="tarjeta-regalo" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="150">
+                <p class="texto-regalo">"Su presencia en este día tan especial es el regalo más importante para nosotros. Si desean acompañarnos con algún detalle, sabremos apreciarlo."</p>
+                
+                <div class="caja-alias" style="background: #fff;">
+                    <p class="alias-titulo">Alias para aportes</p>
+                    <p class="alias-texto">melani.pedro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+    <div class="logo-footer"></div>
+    <p>Creado por <span>NovaBit Media</span> exclusivamente para Pedro y Melani.<br>© Todos los Derechos Reservados.</p>
+</footer>
+
+    <a href="#" class="btn-arriba" id="btnArriba">
+        <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 1. Inicializar Animaciones de Scroll
+        AOS.init({ once: true, offset: 60, easing: 'ease-out-cubic' });
+
+        // 2. Cuenta Regresiva
+        const fechaObjetivo = new Date("May 2, 2026 20:30:00").getTime();
+        setInterval(function() {
+            const ahora = new Date().getTime();
+            const distancia = fechaObjetivo - ahora;
+            if (distancia > 0) {
+                const format = (num) => num < 10 ? "0" + num : num;
+                document.getElementById("dias").innerText = format(Math.floor(distancia / (1000 * 60 * 60 * 24)));
+                document.getElementById("horas").innerText = format(Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                document.getElementById("minutos").innerText = format(Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60)));
+                document.getElementById("segundos").innerText = format(Math.floor((distancia % (1000 * 60)) / 1000));
+            }
+        }, 1000);
+
+        // 3. Botón Volver Arriba
+        const btnArriba = document.getElementById("btnArriba");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                btnArriba.classList.add("visible");
+            } else {
+                btnArriba.classList.remove("visible");
+            }
+        };
+        btnArriba.addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        /* ============================================================== */
+        /* ⬇️ SCRIPT PARA GENERAR LA LLUVIA DORADA (BORRA ESTO SI NO TE GUSTA) ⬇️ */
+        /* ============================================================== */
+        document.addEventListener("DOMContentLoaded", function() {
+            const contenedor = document.getElementById('contenedor-destellos');
+            const cantidadDestellos = 40; // Cantidad de chispas (ajusta si quieres más o menos)
+
+            for (let i = 0; i < cantidadDestellos; i++) {
+                const destello = document.createElement('div');
+                destello.classList.add('destello');
+                
+                // Posición horizontal aleatoria
+                destello.style.left = Math.random() * 100 + 'vw';
+                // Retraso aleatorio para que no caigan todos juntos
+                destello.style.animationDelay = Math.random() * 5 + 's';
+                // Duración de caída aleatoria para variedad
+                destello.style.animationDuration = (Math.random() * 5 + 5) + 's'; // Entre 5 y 10 segundos
+                // Tamaño aleatorio sutil
+                const size = Math.random() * 3 + 1; // Entre 1px y 4px
+                destello.style.width = size + 'px';
+                destello.style.height = size + 'px';
+
+                contenedor.appendChild(destello);
+            }
+        });
+        /* ============================================================== */
+        /* ⬆️ FIN DEL SCRIPT DE LLUVIA ⬆️ */
+        /* ============================================================== */
+
+// LÓGICA DE LA MÚSICA REFORZADA PARA MÓVILES
+        const btnMusica = document.getElementById('btnMusica');
+        const musicaFondo = document.getElementById('musicaFondo');
+        let musicaReproduciendo = false;
+
+        // Función para encender/apagar música
+        function alternarMusica() {
+            if (musicaReproduciendo) {
+                musicaFondo.pause();
+                btnMusica.style.opacity = '0.5'; // Se ve apagado
+                btnMusica.classList.remove('animacion-latido-musica');
+            } else {
+                musicaFondo.play().then(() => {
+                    // Si el navegador permite reproducir, actualizamos el botón
+                    btnMusica.style.opacity = '1'; 
+                    btnMusica.classList.add('animacion-latido-musica');
+                    musicaReproduciendo = true;
+                }).catch((error) => {
+                    // Si el navegador lo bloquea, no hacemos nada hasta que toque el botón
+                    console.log("El navegador requiere interacción manual");
+                });
+            }
+            if(musicaReproduciendo === true) { musicaReproduciendo = false; } else { musicaReproduciendo = true; }
+        }
+
+        // 1. Arranca si tocan el botón directamente
+        btnMusica.addEventListener('click', alternarMusica);
+
+        // 2. Arranca si tocan la pantalla para hacer scroll (touchstart) o hacen click en cualquier lado
+        function arrancarPrimerToque() {
+            if (!musicaReproduciendo) {
+                musicaFondo.play().then(() => {
+                    btnMusica.style.opacity = '1';
+                    btnMusica.classList.add('animacion-latido-musica');
+                    musicaReproduciendo = true;
+                }).catch(e => console.log("Bloqueado por autoplay"));
+            }
+            // Una vez que arranca, quitamos estos "escuchadores" para que no consuman batería
+            document.removeEventListener('touchstart', arrancarPrimerToque);
+            document.removeEventListener('click', arrancarPrimerToque);
+            document.removeEventListener('scroll', arrancarPrimerToque);
+        }
+
+        // Le decimos al navegador que esté atento a cualquiera de estas 3 acciones
+        document.addEventListener('touchstart', arrancarPrimerToque, { once: true });
+        document.addEventListener('click', arrancarPrimerToque, { once: true });
+        document.addEventListener('scroll', arrancarPrimerToque, { once: true });
+
+        // LÓGICA DE LA PANTALLA DE APERTURA
+        const btnAbrir = document.getElementById('btnAbrir');
+        const pantallaApertura = document.getElementById('pantalla-apertura');
+
+        btnAbrir.addEventListener('click', function() {
+            // 1. Ocultamos la pantalla de inicio con una animación elegante
+            pantallaApertura.classList.add('oculta');
+            
+            // 2. MAGIA: Aprovechamos este clic para arrancar la música automáticamente
+            if (typeof musicaReproduciendo !== 'undefined' && !musicaReproduciendo) {
+                alternarMusica();
+            }
+        });
+    </script>
+</body>
+</html>
