@@ -275,6 +275,14 @@
         /* ============================================================== */
 
         /* ================= PANTALLA DE APERTURA ================= */
+        /* Contenedor del ícono de la pareja en la pantalla de apertura */
+#pantalla-apertura .icono-animado-apertura img {
+    width: 100px; /* Ajustar este valor a un tamaño similar al corazón original */
+    height: auto; /* Mantener la proporción de la imagen */
+    max-width: 100%; /* Asegurar que no supere el contenedor del cuadro */
+    max-height: 100%;
+    margin-bottom: 20px; /* Mantener el espacio con el texto */
+}
         .pantalla-apertura {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background-color: var(--fondo-blanco);
@@ -662,6 +670,7 @@
     </script>
 </body>
 </html>
+
 
 
 
